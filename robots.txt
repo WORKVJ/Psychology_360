@@ -1,0 +1,6 @@
+# robots.txt for Psychology 360
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://psychology360.com/sitemap.xml
