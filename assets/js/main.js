@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', checkHeaderScroll);
   checkHeaderScroll();
 
-  // --- 4. CUSTOM CURSOR ---
+  // --- 4. CUSTOM CURSOR & SPOTLIGHTS ---
   const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
   if (!prefersReducedMotion && !isTouchDevice) {
     const cursor = document.createElement('div');
@@ -55,26 +55,22 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(cursor);
     document.body.appendChild(follower);
 
-    let mouseX = 0;
-    let mouseY = 0;
-    let followX = 0;
-    let followY = 0;
+    // Initialize offsets via GSAP to maintain perfect cursor centering
+    gsap.set(cursor, { xPercent: -50, yPercent: -50 });
+    gsap.set(follower, { xPercent: -50, yPercent: -50 });
+
+    // GSAP quickTo setters for physics-based fluid spring cursor
+    const cursorX = gsap.quickTo(cursor, "x", { duration: 0.08, ease: "power3.out" });
+    const cursorY = gsap.quickTo(cursor, "y", { duration: 0.08, ease: "power3.out" });
+    const followerX = gsap.quickTo(follower, "x", { duration: 0.35, ease: "power3.out" });
+    const followerY = gsap.quickTo(follower, "y", { duration: 0.35, ease: "power3.out" });
 
     window.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      cursor.style.left = mouseX + 'px';
-      cursor.style.top = mouseY + 'px';
+      cursorX(e.clientX);
+      cursorY(e.clientY);
+      followerX(e.clientX);
+      followerY(e.clientY);
     });
-
-    const updateFollower = () => {
-      followX += (mouseX - followX) * 0.12;
-      followY += (mouseY - followY) * 0.12;
-      follower.style.left = followX + 'px';
-      follower.style.top = followY + 'px';
-      requestAnimationFrame(updateFollower);
-    };
-    updateFollower();
 
     const links = document.querySelectorAll('a, button, .btn');
     links.forEach(el => {
@@ -107,6 +103,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- 4.5. CARD HOVER SPOTLIGHT TRACKER ---
+  const spotlightCards = document.querySelectorAll('.journey-bcard, .prof-card, .blog-card-editorial, .hero-ratings-card-redesign');
+  spotlightCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+
   // --- 5. MAGNETIC BUTTONS ---
   if (!prefersReducedMotion && !isTouchDevice) {
     const magnetics = document.querySelectorAll('.btn-primary, .btn-secondary, .logo, .menu-toggle, .hero-play-badge');
@@ -123,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 6. MOUSE REACTIVE HERO PARALLAX ---
+  // --- 6. MOUSE REACTIVE HERO PARALLAX (3D DEPTH EFFECT) ---
   const heroSec = document.querySelector('.hero-sec-redesign');
   if (heroSec && !prefersReducedMotion && !isTouchDevice) {
     heroSec.addEventListener('mousemove', (e) => {
@@ -132,10 +140,27 @@ document.addEventListener('DOMContentLoaded', () => {
       const mouseX = e.clientX - w / 2;
       const mouseY = e.clientY - h / 2;
 
-      gsap.to('.hero-orbital-rings', { x: mouseX * 0.015, y: mouseY * 0.015, duration: 0.7, ease: 'power2.out' });
-      gsap.to('.hero-counselor-img', { x: mouseX * 0.025, y: mouseY * 0.025, duration: 0.5, ease: 'power2.out' });
-      gsap.to('.hero-ratings-card-redesign', { x: mouseX * 0.038, y: mouseY * 0.038, duration: 0.4, ease: 'power2.out' });
-      gsap.to('.hero-pill-btn-left', { x: mouseX * 0.012, y: mouseY * 0.012, duration: 0.6, ease: 'power2.out' });
+      // 3D rotation tilt of the visual container itself
+      gsap.to('.hero-visual-system-redesign', {
+        rotationY: mouseX * 0.025,
+        rotationX: -mouseY * 0.025,
+        transformPerspective: 1200,
+        transformOrigin: "center center",
+        duration: 0.8,
+        ease: 'power2.out'
+      });
+
+      // Parallax depths for layers
+      gsap.to('.hero-orbital-rings', { x: mouseX * 0.012, y: mouseY * 0.012, duration: 0.7, ease: 'power2.out' });
+      gsap.to('.hero-counselor-img', { x: mouseX * 0.02, y: mouseY * 0.02, duration: 0.6, ease: 'power2.out' });
+      gsap.to('.hero-ratings-card-redesign', { x: mouseX * 0.035, y: mouseY * 0.035, duration: 0.5, ease: 'power2.out' });
+      gsap.to('.hero-pill-btn-left', { x: mouseX * 0.01, y: mouseY * 0.01, duration: 0.6, ease: 'power2.out' });
+    });
+    
+    // Reset 3D tilt on mouse leave
+    heroSec.addEventListener('mouseleave', () => {
+      gsap.to('.hero-visual-system-redesign', { rotationY: 0, rotationX: 0, duration: 1.2, ease: 'power3.out' });
+      gsap.to('.hero-orbital-rings, .hero-counselor-img, .hero-ratings-card-redesign, .hero-pill-btn-left', { x: 0, y: 0, duration: 1.2, ease: 'power3.out' });
     });
   }
 

@@ -2,16 +2,17 @@
 
 /* --- COLOR & TYPOGRAPHY SYSTEM --- */
 :root {
-  --color-primary: #0B4F48;      /* Deep Spruce / Teal */
-  --color-secondary: #D8E8E1;    /* Soft Sage */
-  --color-accent: #D48C70;       /* Terracotta Accent */
-  --color-bg-light: #FAF9F6;     /* Warm Cream Background */
-  --color-white: #FFFFFF;        /* Pure White */
+  --color-primary: #0F766E;      /* Vibrant Emerald Teal */
+  --color-secondary: #0D2622;    /* Dark Sage Forest Backdrop */
+  --color-accent: #7C3AED;       /* Deep Violet Accent */
+  --color-accent-peach: #E07A5F;  /* Warm Terracotta Glow */
+  --color-bg-light: #020605;     /* Ultra Dark Deep Pine/Black */
+  --color-white: #0A1110;        /* Deep Obsidian Glass Backdrop */
   
-  --color-text-dark: #0B4F48;
-  --color-text-muted: #527A75;
-  --color-border: rgba(11, 79, 72, 0.1);
-  --color-border-solid: rgba(11, 79, 72, 0.2);
+  --color-text-dark: #ECFDF5;    /* Soft Emerald Off-White for High Contrast */
+  --color-text-muted: #81A8A2;   /* Muted Sage Gray */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-solid: rgba(255, 255, 255, 0.18);
 
   --font-heading: 'Plus Jakarta Sans', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -189,17 +190,17 @@ header {
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 2.2rem 0;
+  padding: 1rem 0;
   transition: padding 0.4s var(--transition-smooth), background-color 0.4s, border-color 0.4s;
   border-bottom: 1px solid transparent;
 }
 
 header.scrolled {
-  padding: 1.1rem 0;
-  background-color: rgba(250, 249, 246, 0.96);
+  padding: 0.6rem 0;
+  background-color: rgba(2, 6, 5, 0.88);
   backdrop-filter: blur(15px);
-  border-color: var(--color-border);
-  box-shadow: var(--shadow-subtle);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .nav-wrapper {
@@ -222,7 +223,7 @@ header.scrolled {
   background: url('../images/logo-no-bg.png') no-repeat center/contain;
   position: relative;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  filter: invert(0.85); /* Converts light outline to dark charcoal for high visibility */
+  filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.2));
 }
 
 .logo:hover .logo-symbol {
@@ -230,19 +231,23 @@ header.scrolled {
 }
 
 .logo span {
-  display: none;
+  display: inline;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text-dark);
 }
 .nav-links {
   display: flex;
   align-items: center;
   gap: 0.25rem;
   list-style: none;
-  background-color: rgba(11, 79, 72, 0.96); /* Dark Spruce brand glass backdrop */
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(127, 224, 114, 0.14); /* Light green glass backdrop */
+  border: 1px solid rgba(127, 224, 114, 0.28);
   padding: 0.35rem;
   border-radius: var(--border-radius-capsule);
   backdrop-filter: blur(15px);
-  box-shadow: 0 12px 30px rgba(11, 79, 72, 0.12);
+  box-shadow: 0 12px 30px rgba(127, 224, 114, 0.08);
 }
 
 .nav-links a {
@@ -250,7 +255,7 @@ header.scrolled {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(236, 253, 245, 0.8);
   padding: 0.55rem 1.25rem;
   border-radius: var(--border-radius-capsule);
   transition: all 0.3s var(--transition-smooth);
@@ -258,13 +263,13 @@ header.scrolled {
 }
 
 .nav-links a:hover {
-  color: var(--color-white);
+  color: #7FE072;
 }
 
 .nav-links a.active {
-  color: var(--color-white);
-  background-color: rgba(255, 255, 255, 0.12); /* Capsule highlight backing tab */
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  color: #020605; /* Dark text for readability on active green background */
+  background-color: #7FE072; /* Active tab is solid light green */
+  box-shadow: 0 2px 10px rgba(127, 224, 114, 0.25);
 }
 
 .lang-switcher {
@@ -435,9 +440,9 @@ header.scrolled {
    ============================================================ */
 
 .hero-sec-redesign {
-  background-color: #F7F9FB; /* Light off-white background matching reference */
-  padding-top: 8rem;
-  padding-bottom: 7rem;
+  background-color: transparent;
+  padding-top: 8.8rem; /* Clear the fixed header while pulling the content up */
+  padding-bottom: 3.5rem;
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--color-border);
@@ -499,7 +504,7 @@ header.scrolled {
 /* ─── 1. Header block ─── */
 .hero-header-block-redesign {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2.8rem; /* Compact layout */
   position: relative;
 }
 
@@ -508,7 +513,7 @@ header.scrolled {
   font-size: clamp(2.8rem, 5vw, 4.2rem);
   font-weight: 800;
   line-height: 1.1;
-  color: #0F172A;
+  color: #fff;
   letter-spacing: -0.04em;
   margin: 0;
 }
@@ -547,9 +552,9 @@ header.scrolled {
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #0F172A;
+  color: #fff;
   background: transparent;
-  border: 1px solid rgba(15, 23, 42, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 40px;
   padding: 0.8rem 1.6rem;
   text-decoration: none;
@@ -557,9 +562,9 @@ header.scrolled {
 }
 
 .hero-pill-btn-left:hover {
-  background: #0F172A;
-  color: #fff;
-  border-color: #0F172A;
+  background: #fff;
+  color: #020605;
+  border-color: #fff;
 }
 
 .hero-pill-btn-left .pill-arrow {
@@ -582,7 +587,7 @@ header.scrolled {
   position: relative;
   width: 100%;
   max-width: 440px;
-  height: 480px;
+  height: 420px; /* Reduced slightly to create breathing space */
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -597,24 +602,39 @@ header.scrolled {
   justify-content: center;
   pointer-events: none;
   z-index: 1;
+  perspective: 1000px;
 }
 
 .hero-orbital-rings .ring {
   position: absolute;
-  border: 1px solid rgba(15, 23, 42, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.05);
   border-radius: 50%;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.03);
 }
 
 .hero-orbital-rings .ring-outer {
   width: 92%;
   height: 85%;
-  background: radial-gradient(circle, rgba(15, 23, 42, 0.02) 0%, transparent 80%);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.03) 0%, transparent 80%);
+  animation: orbit-rotate-clockwise 45s linear infinite;
 }
 
 .hero-orbital-rings .ring-inner {
   width: 72%;
   height: 66%;
   border-style: dashed;
+  border-color: rgba(16, 185, 129, 0.2);
+  animation: orbit-rotate-counter 30s linear infinite;
+}
+
+@keyframes orbit-rotate-clockwise {
+  from { transform: rotate(0deg) rotateX(10deg); }
+  to { transform: rotate(360deg) rotateX(10deg); }
+}
+
+@keyframes orbit-rotate-counter {
+  from { transform: rotate(360deg) rotateX(-10deg); }
+  to { transform: rotate(0deg) rotateX(-10deg); }
 }
 
 /* Image container */
@@ -626,7 +646,7 @@ header.scrolled {
   overflow: visible;
   display: flex;
   justify-content: center;
-  margin-top: -65px; /* Shifting the counselor image higher up */
+  margin-top: -85px; /* Clean positioning and height alignment */
 }
 
 .hero-counselor-img {
@@ -635,6 +655,8 @@ header.scrolled {
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 20px 30px rgba(15, 23, 42, 0.08));
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 98%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 98%);
 }
 
 /* Doodle arrow bottom left */
@@ -714,14 +736,16 @@ header.scrolled {
 }
 
 .hero-ratings-card-redesign {
-  background: #fff;
-  border: 1px solid rgba(15, 23, 42, 0.06);
+  background: rgba(10, 18, 16, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   padding: 2.2rem 2rem;
   width: 100%;
   max-width: 260px;
   text-align: center;
-  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .rating-stars {
@@ -734,7 +758,7 @@ header.scrolled {
   font-family: var(--font-heading);
   font-size: 2.2rem;
   font-weight: 800;
-  color: #0F172A;
+  color: #fff;
   margin: 0 0 0.4rem 0;
   line-height: 1;
 }
@@ -764,8 +788,8 @@ header.scrolled {
     max-width: 280px;
   }
   .hero-sec-redesign {
-    padding-top: 7rem;
-    padding-bottom: 5rem;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
   }
   .hero-doodle-starburst {
     width: 60px;
@@ -779,6 +803,9 @@ header.scrolled {
   }
   .hero-visual-system-redesign {
     height: 380px;
+  }
+  .hero-cutout-container {
+    margin-top: -85px;
   }
   .hero-bottom-floating-actions {
     flex-direction: column;
@@ -2132,4 +2159,156 @@ footer {
 /* Hide language switcher globally per user request */
 .lang-switcher {
   display: none !important;
+}
+
+/* ============================================================
+   2026 PREMIUM REDESIGN EXTENSIONS
+   ============================================================ */
+
+/* Floating Mesh Gradients */
+.mesh-gradients {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.7;
+}
+
+.mesh-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.22;
+  mix-blend-mode: screen;
+}
+
+.glow-1 {
+  width: 55vw;
+  height: 55vw;
+  background: radial-gradient(circle, #0B4F48 0%, transparent 75%);
+  top: -10%;
+  left: -10%;
+}
+
+.glow-2 {
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, #7C3AED 0%, transparent 75%);
+  bottom: -15%;
+  right: -10%;
+}
+
+.glow-3 {
+  width: 45vw;
+  height: 45vw;
+  background: radial-gradient(circle, #D48C70 0%, transparent 75%);
+  top: 35%;
+  left: 25%;
+}
+
+/* Glassmorphism Overrides */
+.journey-bcard, .prof-card, .blog-card-editorial, .hero-ratings-card-redesign, .faq-item-editorial {
+  position: relative;
+  background: rgba(10, 18, 16, 0.45) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Card Hover border spotlight effect */
+.journey-bcard::before, .prof-card::before, .blog-card-editorial::before, .hero-ratings-card-redesign::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(255, 255, 255, 0.15),
+    transparent 50%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.4s var(--transition-smooth);
+}
+
+/* Card Hover background spotlight highlight */
+.journey-bcard::after, .prof-card::after, .blog-card-editorial::after, .hero-ratings-card-redesign::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    300px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(255, 255, 255, 0.03),
+    transparent 50%
+  );
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s var(--transition-smooth);
+}
+
+.journey-bcard:hover::before, .prof-card:hover::before, .blog-card-editorial:hover::before, .hero-ratings-card-redesign:hover::before,
+.journey-bcard:hover::after, .prof-card:hover::after, .blog-card-editorial:hover::after, .hero-ratings-card-redesign:hover::after {
+  opacity: 1;
+}
+
+/* FAQ Editorial Modernization */
+.faq-item-editorial {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 16px !important;
+  padding: 1.5rem 2rem !important;
+  margin-bottom: 1.25rem !important;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.faq-item-editorial:hover {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Text Splitting Reveal */
+.split-line {
+  overflow: hidden;
+  display: block;
+}
+
+.split-word {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0s, opacity 0s;
+}
+
+/* Global Color & Body Tweaks */
+body {
+  background-color: var(--color-bg-light) !important;
+  color: var(--color-text-dark) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text-dark) !important;
+}
+
+.hero-desc-redesign {
+  color: var(--color-text-muted) !important;
+}
+
+/* Dark mode specific text elements */
+.rating-subtitle, .prof-card-degree, .journey-bcard-desc, .services-main-desc, .footer-desc {
+  color: var(--color-text-muted) !important;
+}
+
+.rating-title, .journey-bcard-title, .journey-bento-title, .services-main-title {
+  color: #fff !important;
 }
