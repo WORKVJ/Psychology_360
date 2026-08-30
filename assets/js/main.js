@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', checkHeaderScroll);
   checkHeaderScroll();
 
-  // --- 4. EXPENSIVE CUSTOM CURSOR ---
+  // --- 4. CUSTOM CURSOR ---
   const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
   if (!prefersReducedMotion && !isTouchDevice) {
     const cursor = document.createElement('div');
@@ -76,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     updateFollower();
 
-    // Hover Over general links
     const links = document.querySelectorAll('a, button, .btn');
     links.forEach(el => {
       el.addEventListener('mouseenter', () => {
@@ -89,20 +88,14 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Lens Mode over images
     const images = document.querySelectorAll('.hero-human-portrait-container, .about-organic-mask-container, .blog-card-img-wrap, .prof-avatar-wrap');
     images.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        follower.classList.add('lens-mode');
-      });
-      el.addEventListener('mouseleave', () => {
-        follower.classList.remove('lens-mode');
-      });
+      el.addEventListener('mouseenter', () => { follower.classList.add('lens-mode'); });
+      el.addEventListener('mouseleave', () => { follower.classList.remove('lens-mode'); });
     });
 
-    // View Mode over interactive service rows
-    const serviceRows = document.querySelectorAll('.service-row-item');
-    serviceRows.forEach(el => {
+    const serviceRowsCursor = document.querySelectorAll('.service-row-item');
+    serviceRowsCursor.forEach(el => {
       el.addEventListener('mouseenter', () => {
         follower.classList.add('view-mode');
         follower.textContent = 'VIEW';
@@ -114,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 5. MAGNETIC BUTTONS Snapping ---
+  // --- 5. MAGNETIC BUTTONS ---
   if (!prefersReducedMotion && !isTouchDevice) {
     const magnetics = document.querySelectorAll('.btn-primary, .btn-secondary, .logo, .menu-toggle, .hero-play-badge');
     magnetics.forEach(btn => {
@@ -122,27 +115,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const bound = btn.getBoundingClientRect();
         const x = e.clientX - bound.left - (bound.width / 2);
         const y = e.clientY - bound.top - (bound.height / 2);
-        
-        gsap.to(btn, {
-          x: x * 0.35,
-          y: y * 0.35,
-          duration: 0.3,
-          ease: 'power2.out'
-        });
+        gsap.to(btn, { x: x * 0.35, y: y * 0.35, duration: 0.3, ease: 'power2.out' });
       });
-      
       btn.addEventListener('mouseleave', () => {
-        gsap.to(btn, {
-          x: 0,
-          y: 0,
-          duration: 0.5,
-          ease: 'elastic.out(1, 0.3)'
-        });
+        gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.3)' });
       });
     });
   }
 
-  // --- 6. MOUSE REACTIVE HERO LAYERED PARALLAX ---
+  // --- 6. MOUSE REACTIVE HERO PARALLAX ---
   const heroSec = document.querySelector('.hero-sec');
   if (heroSec && !prefersReducedMotion && !isTouchDevice) {
     heroSec.addEventListener('mousemove', (e) => {
@@ -151,45 +132,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const mouseX = e.clientX - w / 2;
       const mouseY = e.clientY - h / 2;
 
-      // Layer 1 Background Blur shape (extremely subtle - 2px)
-      gsap.to('.hero-bg-blur', {
-        x: mouseX * 0.005,
-        y: mouseY * 0.005,
-        duration: 0.8,
-        ease: 'power2.out'
-      });
-
-      // Layer 2: Orbit system (subtle - 6px)
-      gsap.to('.hero-orbital-background', {
-        x: mouseX * 0.012,
-        y: mouseY * 0.012,
-        duration: 0.6,
-        ease: 'power2.out'
-      });
-
-      // Layer 3: Abstract gradient (medium - 10px)
-      gsap.to('.hero-visual-gradient', {
-        x: mouseX * 0.02,
-        y: mouseY * 0.02,
-        duration: 0.5,
-        ease: 'power2.out'
-      });
-
-      // Layer 4: Portrait masked image (stronger - 15px)
-      gsap.to('.hero-portrait-mask', {
-        x: mouseX * 0.03,
-        y: mouseY * 0.03,
-        duration: 0.4,
-        ease: 'power2.out'
-      });
-
-      // Layer 5 & 6: Foreground elements (strongest - 25px)
-      gsap.to('.hero-foreground-element', {
-        x: mouseX * 0.05,
-        y: mouseY * 0.05,
-        duration: 0.3,
-        ease: 'power2.out'
-      });
+      gsap.to('.hero-bg-blur', { x: mouseX * 0.005, y: mouseY * 0.005, duration: 0.8, ease: 'power2.out' });
+      gsap.to('.hero-orbital-background', { x: mouseX * 0.012, y: mouseY * 0.012, duration: 0.6, ease: 'power2.out' });
+      gsap.to('.hero-visual-gradient', { x: mouseX * 0.02, y: mouseY * 0.02, duration: 0.5, ease: 'power2.out' });
+      gsap.to('.hero-portrait-mask', { x: mouseX * 0.03, y: mouseY * 0.03, duration: 0.4, ease: 'power2.out' });
+      gsap.to('.hero-foreground-element', { x: mouseX * 0.05, y: mouseY * 0.05, duration: 0.3, ease: 'power2.out' });
     });
   }
 
@@ -200,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
     menuToggle.addEventListener('click', () => {
       menuToggle.classList.toggle('open');
       mobileNav.classList.toggle('open');
-      
       if (mobileNav.classList.contains('open')) {
         document.body.style.overflow = 'hidden';
         if (lenisInstance) lenisInstance.stop();
@@ -221,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 8. SERVICES INTERACTIVE LIST LISTENER ---
+  // --- 8. SERVICES INTERACTIVE LIST ---
   const serviceRows = document.querySelectorAll('.service-row-item');
   const serviceImages = document.querySelectorAll('.services-dynamic-img');
   const centerProgressNumber = document.querySelector('.services-360-center-text');
@@ -231,16 +177,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const handleTrigger = () => {
         serviceRows.forEach(r => r.classList.remove('active'));
         serviceImages.forEach(img => img.classList.remove('active'));
-        
         row.classList.add('active');
-        if (serviceImages[index]) {
-          serviceImages[index].classList.add('active');
-        }
-        if (centerProgressNumber) {
-          centerProgressNumber.textContent = `0${index + 1}`;
-        }
+        if (serviceImages[index]) serviceImages[index].classList.add('active');
+        if (centerProgressNumber) centerProgressNumber.textContent = `0${index + 1}`;
       };
-
       row.addEventListener('mouseenter', handleTrigger);
       row.addEventListener('click', handleTrigger);
     });
@@ -259,18 +199,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentPath.includes('/ml/')) {
           targetPath = currentPath;
         } else {
-          if (currentPath === '/' || currentPath.endsWith('index.html') && !currentPath.includes('/', 2)) {
+          if (currentPath === '/' || (currentPath.endsWith('index.html') && !currentPath.includes('/', 2))) {
             targetPath = '/ml/';
           } else {
             targetPath = '/ml' + currentPath;
           }
         }
       } else {
-        if (currentPath.includes('/ml/')) {
-          targetPath = currentPath.replace('/ml/', '/');
-        } else {
-          targetPath = currentPath;
-        }
+        targetPath = currentPath.includes('/ml/') ? currentPath.replace('/ml/', '/') : currentPath;
       }
 
       window.location.href = targetPath;
@@ -283,7 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (contactForm && formStatus) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-
       const name = document.querySelector('#form-name').value.trim();
       const email = document.querySelector('#form-email').value.trim();
       const phone = document.querySelector('#form-phone').value.trim();
@@ -292,23 +227,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!name || !email || !message) {
         formStatus.textContent = 'Please fill in all required fields.';
         formStatus.className = 'form-status';
-        formStatus.style.display = 'block';
-        formStatus.style.backgroundColor = '#FAF0F0';
-        formStatus.style.color = '#EF4444';
-        formStatus.style.padding = '0.75rem 1rem';
-        formStatus.style.borderRadius = '6px';
-        formStatus.style.marginBottom = '1.5rem';
+        formStatus.style.cssText = 'display:block;background:#FAF0F0;color:#EF4444;padding:0.75rem 1rem;border-radius:6px;margin-bottom:1.5rem;';
         return;
       }
 
       formStatus.textContent = 'Redirecting to mail client...';
       formStatus.className = 'form-status success';
-      formStatus.style.display = 'block';
-      formStatus.style.backgroundColor = '#EBFDF5';
-      formStatus.style.color = '#10B981';
-      formStatus.style.padding = '0.75rem 1rem';
-      formStatus.style.borderRadius = '6px';
-      formStatus.style.marginBottom = '1.5rem';
+      formStatus.style.cssText = 'display:block;background:#EBFDF5;color:#10B981;padding:0.75rem 1rem;border-radius:6px;margin-bottom:1.5rem;';
 
       setTimeout(() => {
         const mailtoUrl = `mailto:[Email Address]?subject=Psychology 360 Enquiry from ${encodeURIComponent(name)}&body=Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}%0AMessage: ${encodeURIComponent(message)}`;
@@ -325,7 +250,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     faqHeader.addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
-
       faqItems.forEach(otherItem => {
         if (otherItem !== item) {
           otherItem.classList.remove('open');

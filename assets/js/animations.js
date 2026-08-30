@@ -219,85 +219,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 4. SIGNATURE PINNED 360° ORBIT JOURNEY ---
-  ScrollTrigger.matchMedia({
-    '(min-width: 992px)': function() {
-      const journeyPaneCards = document.querySelectorAll('.journey-card-pane');
-      const journeyIndicators = document.querySelectorAll('.journey-indicator-item');
-      
-      const pinTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.journey-pinned-sec',
-          start: 'top top',
-          end: '+=400%',
-          pin: true,
-          scrub: 1,
-          onUpdate: (self) => {
-            // Calculate active panel based on progress (0 to 1)
-            const activeIndex = Math.min(
-              journeyPaneCards.length - 1,
-              Math.floor(self.progress * journeyPaneCards.length)
-            );
-            updateJourneyState(activeIndex);
-          }
-        }
-      });
-
-      // Orbit rotations on scroll progress
-      pinTimeline.to('.journey-orbit-graphic', {
-        rotation: 360,
-        ease: 'none'
-      });
-
-      function updateJourneyState(activeIndex) {
-        journeyIndicators.forEach((ind, index) => {
-          if (index === activeIndex) {
-            ind.classList.add('active');
-            gsap.to(ind, { x: 8, duration: 0.3 });
-          } else {
-            ind.classList.remove('active');
-            gsap.to(ind, { x: 0, duration: 0.3 });
-          }
-        });
-
-        journeyPaneCards.forEach((pane, index) => {
-          if (index === activeIndex) {
-            gsap.to(pane, { opacity: 1, y: 0, duration: 0.4 });
-          } else {
-            gsap.to(pane, { opacity: 0.15, y: 15, duration: 0.4 });
-          }
-        });
+  // --- 4. 360° JOURNEY BENTO GRID REVEAL ---
+  const bentoGrid = document.querySelector('.journey-bento-grid');
+  if (bentoGrid) {
+    gsap.fromTo('.journey-bento-header-left, .journey-bento-header-right', {
+      opacity: 0,
+      y: 35
+    }, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      stagger: 0.15,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.journey-bento-sec',
+        start: 'top 80%'
       }
+    });
 
-      // --- 5. 360° -> SERVICES TRANSITION PATHWAY ---
-      // As the user scrolls out of Section 3, the circular system expands and dissolves into the top divider line of Services
-      gsap.fromTo('.journey-orbit-graphic-container', {
-        scale: 1,
-        opacity: 0.18
-      }, {
-        scale: 1.8,
-        opacity: 0,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.services-interactive-sec',
-          start: 'top 120%',
-          end: 'top 80%',
-          scrub: true
-        }
-      });
+    gsap.fromTo('.journey-bcard', {
+      opacity: 0,
+      y: 50,
+      scale: 0.97
+    }, {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.9,
+      stagger: 0.12,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.journey-bento-grid',
+        start: 'top 80%'
+      }
+    });
+  }
 
-      gsap.fromTo('.services-divider-line-top', {
-        scaleX: 0
-      }, {
-        scaleX: 1,
-        ease: 'power2.inOut',
-        scrollTrigger: {
-          trigger: '.services-interactive-sec',
-          start: 'top 95%',
-          end: 'top 75%',
-          scrub: true
-        }
-      });
+  gsap.fromTo('.services-divider-line-top', {
+    scaleX: 0
+  }, {
+    scaleX: 1,
+    ease: 'power2.inOut',
+    scrollTrigger: {
+      trigger: '.services-interactive-sec',
+      start: 'top 95%',
+      end: 'top 75%',
+      scrub: true
     }
   });
 
@@ -392,101 +359,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- 8. JOURNEY SECTION — VIOLET SCROLL ENERGY ---
-
-  // Header cinematic reveal
-  const journeyHeader = document.querySelector('.journey-header');
-  if (journeyHeader) {
-    gsap.fromTo(journeyHeader, {
-      opacity: 0,
-      y: 40,
-      filter: 'blur(6px)'
-    }, {
-      opacity: 1,
-      y: 0,
-      filter: 'blur(0px)',
-      duration: 1.1,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: journeyHeader,
-        start: 'top 82%'
-      }
-    });
-  }
-
-  // Each strip: slide up + violet glow on scroll entry
-  document.querySelectorAll('.journey-strip').forEach((strip, i) => {
-    const num   = strip.querySelector('.journey-num-display');
-    const phase = strip.querySelector('.journey-strip-phase');
-    const title = strip.querySelector('.journey-strip-title');
-    const desc  = strip.querySelector('.journey-strip-desc');
-    const pills = strip.querySelectorAll('.journey-tag-pill');
-
-    // Strip fades + slides in
-    gsap.fromTo(strip, { opacity: 0, y: 55 }, {
-      opacity: 1, y: 0,
-      duration: 0.9,
-      ease: 'power3.out',
-      delay: i * 0.04,
-      scrollTrigger: { trigger: strip, start: 'top 87%', once: true }
-    });
-
-    // Number glows violet on entry, then settles to dim
-    if (num) {
-      gsap.fromTo(num, {
-        opacity: 0,
-        x: i % 2 === 0 ? -40 : 40
-      }, {
-        opacity: 1, x: 0,
-        duration: 1.0,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: strip, start: 'top 82%', once: true },
-        onComplete() {
-          gsap.to(num, {
-            filter: 'drop-shadow(0 0 0px rgba(139,92,246,0))',
-            duration: 1.4, delay: 0.3
-          });
-        }
-      });
-
-      // Violet glow pulses while strip is in the viewport
-      gsap.fromTo(num, {
-        filter: 'drop-shadow(0 0 0px rgba(139,92,246,0))'
-      }, {
-        filter: 'drop-shadow(0 0 55px rgba(139,92,246,0.38))',
-        scrollTrigger: {
-          trigger: strip,
-          start: 'top 62%',
-          end: 'bottom 38%',
-          scrub: true
-        }
-      });
-    }
-
-    // Content stagger entry
-    const contentEls = [phase, title, desc, ...Array.from(pills)].filter(Boolean);
-    if (contentEls.length) {
-      gsap.fromTo(contentEls, { opacity: 0, y: 22 }, {
-        opacity: 1, y: 0,
-        duration: 0.7,
-        stagger: 0.08,
-        ease: 'power2.out',
-        scrollTrigger: { trigger: strip, start: 'top 80%', once: true }
-      });
-    }
-
-    // Ambient violet wash while strip centre is in view
-    gsap.to(strip, {
-      backgroundColor: 'rgba(112,40,210,0.04)',
-      scrollTrigger: {
-        trigger: strip,
-        start: 'top 55%',
-        end: 'bottom 45%',
-        scrub: true,
-        onLeave: () => gsap.to(strip, { backgroundColor: 'rgba(112,40,210,0)', duration: 0.8 }),
-        onLeaveBack: () => gsap.to(strip, { backgroundColor: 'rgba(112,40,210,0)', duration: 0.8 })
-      }
-    });
-  });
 });
 
