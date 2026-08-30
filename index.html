@@ -61,7 +61,7 @@
           <span>|</span>
           <a href="ml/index.html" data-lang="ml">ML</a>
         </div>
-        <a href="contact/index.html" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.8rem; border-radius: 6px;">Contact Us</a>
+        <a href="contact/index.html" class="btn btn-primary" style="padding: 0.6rem 1.6rem; font-size: 0.82rem;">Get Support</a>
       </div>
 
       <button class="menu-toggle" aria-label="Toggle menu">
@@ -95,90 +95,66 @@
 
   <main>
     <!-- HERO SECTION -->
-    <!-- REDESIGNED HERO SECTION -->
     <section class="hero-sec-redesign">
+      <div class="hero-bg-overlay"></div>
       <div class="container hero-container-redesign">
         
-        <!-- Rotating green starburst top-left of page -->
-        <div class="hero-page-doodle hero-doodle-starburst">
-          <svg viewBox="0 0 100 100" class="starburst-svg">
-            <line x1="50" y1="10" x2="50" y2="90" stroke="#7FE072" stroke-width="4"/>
-            <line x1="10" y1="50" x2="90" y2="50" stroke="#7FE072" stroke-width="4"/>
-            <line x1="21.7" y1="21.7" x2="78.3" y2="78.3" stroke="#7FE072" stroke-width="4"/>
-            <line x1="21.7" y1="78.3" x2="78.3" y2="21.7" stroke="#7FE072" stroke-width="4"/>
-            <line x1="35.3" y1="14.6" x2="64.7" y2="85.4" stroke="#7FE072" stroke-width="3"/>
-            <line x1="14.6" y1="35.3" x2="85.4" y2="64.7" stroke="#7FE072" stroke-width="3"/>
-            <line x1="14.6" y1="64.7" x2="85.4" y2="35.3" stroke="#7FE072" stroke-width="3"/>
-            <line x1="35.3" y1="85.4" x2="64.7" y2="14.6" stroke="#7FE072" stroke-width="3"/>
-          </svg>
-        </div>
-
-        <!-- 1. Header Centered Title -->
-        <div class="hero-header-block-redesign">
-          <h1 class="hero-title-redesign js-split-text">Empowering Minds<br>Through Creative Solutions</h1>
-        </div>
-
-        <!-- 2. Three Columns Grid -->
-        <div class="hero-grid-redesign">
+        <!-- Hero main elements: Left-aligned title + Floating right ratings card -->
+        <div class="hero-main-row">
+          <div class="hero-content-left-wrapper">
+            <h1 class="hero-title-redesign js-split-text">Empowering Minds.<br>Restoring Hope.<br>Transforming Lives.</h1>
+          </div>
           
-          <!-- Column A: Left side info + pill -->
-          <div class="hero-col-left">
-            <p class="hero-desc-redesign">
-              We offer specialized clinical counseling templates designed to address individual, family, and developmental mental health needs. Let's create something exceptional together.
+          <div class="hero-col-right-float">
+            <div class="hero-ratings-card-wrap">
+              <div class="hero-ratings-card-redesign">
+                <div class="rating-card-content active" data-theme="red">
+                  <div class="rating-stars">★★★★★</div>
+                  <h3 class="rating-title">10 Years</h3>
+                  <p class="rating-subtitle">Experience in Clinical Practice</p>
+                </div>
+                <div class="rating-card-content" data-theme="white">
+                  <div class="rating-stars">★★★★★</div>
+                  <h3 class="rating-title">99%</h3>
+                  <p class="rating-subtitle">Positive Client Outcomes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero bottom row info elements -->
+        <div class="hero-bottom-row">
+          
+          <!-- Col 1: Circular spinning play badge -->
+          <div class="hero-bottom-col-left">
+            <div class="circular-play-badge">
+              <svg viewBox="0 0 100 100" class="circular-text-svg">
+                <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
+                <text font-size="7" font-weight="800" fill="#fff" letter-spacing="1.8px">
+                  <textPath href="#circlePath">PSYCHOLOGY 360 • EMPOWERING LIVES • </textPath>
+                </text>
+              </svg>
+              <div class="play-icon-center">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="#ff3b30"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Col 2: Large Accent Number/Text Badge -->
+          <div class="hero-bottom-col-center">
+            <span class="large-number-accent">360°</span>
+            <div class="badge-text-desc">
+              <strong>Evidence-Based Care</strong>
+              <span>For Your Mental Well-being</span>
+            </div>
+          </div>
+
+          <!-- Col 3: Bottom Right Description Block -->
+          <div class="hero-bottom-col-right">
+            <p class="hero-bottom-desc">
+              Psychology 360 offers premium mental health services, evidence-based therapy templates, and compassionate clinical counseling designed to help you live a balanced life.
             </p>
-            <a href="about/index.html" class="hero-pill-btn-left">
-              <span>Innovate Your Mind</span>
-              <span class="pill-arrow">↗</span>
-            </a>
-            <!-- Green sparkle doodle -->
-            <div class="hero-doodle-sparkle-left">
-              <svg viewBox="0 0 24 24" class="sparkle-svg-doodle"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#7FE072"/></svg>
-            </div>
-          </div>
-
-          <!-- Column B: Center Visual Subject -->
-          <div class="hero-col-center">
-            <div class="hero-visual-system-redesign">
-              
-              <!-- Orbital Rings Backdrop -->
-              <div class="hero-orbital-rings">
-                <div class="ring ring-outer"></div>
-                <div class="ring ring-inner"></div>
-              </div>
-
-              <!-- Main Cutout Image -->
-              <div class="hero-cutout-container">
-                <img src="assets/images/hero-counselor-cutout.png" class="hero-counselor-img" alt="Professional Psychologist counselor">
-              </div>
-
-              <!-- Decorative curved doodle arrow -->
-              <div class="hero-doodle-arrow">
-                <svg viewBox="0 0 100 100" class="doodle-arrow-svg">
-                  <path d="M20,20 C10,50 40,80 80,60" fill="none" stroke="#222" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round"/>
-                  <path d="M75,55 L82,60 L75,65" fill="none" stroke="#222" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </div>
-
-              <!-- Floating buttons overlapping visual bottom -->
-              <div class="hero-bottom-floating-actions">
-                <a href="contact/index.html" class="action-btn-green">Start Your Journey</a>
-                <a href="services/index.html" class="action-btn-outline">Let's Collaborate</a>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Column C: Right side reviews + stars -->
-          <div class="hero-col-right">
-            <div class="hero-ratings-card-redesign">
-              <div class="rating-stars">★★★★★</div>
-              <h3 class="rating-title">10 Years</h3>
-              <p class="rating-subtitle">Experience in Clinical Practice</p>
-            </div>
-            <!-- Green cursor/arrow doodle top-right of center image -->
-            <div class="hero-doodle-sparkle-right">
-              <svg viewBox="0 0 24 24" class="sparkle-svg-doodle"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#7FE072"/></svg>
-            </div>
           </div>
 
         </div>
@@ -222,7 +198,7 @@
           <!-- Card 1: tall left -->
           <div class="journey-bcard journey-bcard--tall journey-bcard--accent-violet">
             <div class="journey-bcard-img-wrap">
-              <img src="assets/images/hero-reflective.jpg" alt="Reflective person in therapy session">
+              <img src="assets/images/bento-understanding.jpg" alt="Person in quiet self-reflection">
               <div class="journey-bcard-img-overlay"></div>
             </div>
             <div class="journey-bcard-content">
@@ -241,7 +217,7 @@
           <!-- Card 2: top right wide -->
           <div class="journey-bcard journey-bcard--wide journey-bcard--accent-terracotta">
             <div class="journey-bcard-img-wrap">
-              <img src="assets/images/blog-1.jpg" alt="Emotional support session">
+              <img src="assets/images/bento-emotions.jpg" alt="Emotional fluency therapy session">
               <div class="journey-bcard-img-overlay"></div>
             </div>
             <div class="journey-bcard-content">
@@ -260,7 +236,7 @@
           <!-- Card 3: bottom right square -->
           <div class="journey-bcard journey-bcard--square journey-bcard--accent-teal">
             <div class="journey-bcard-img-wrap">
-              <img src="assets/images/therapy-interior.jpg" alt="Therapy room interior">
+              <img src="assets/images/bento-relationships.jpg" alt="Two people in therapeutic conversation">
               <div class="journey-bcard-img-overlay"></div>
             </div>
             <div class="journey-bcard-content">
@@ -279,7 +255,7 @@
           <!-- Card 4: bottom far right square -->
           <div class="journey-bcard journey-bcard--square journey-bcard--accent-lavender">
             <div class="journey-bcard-img-wrap">
-              <img src="assets/images/blog-2.jpg" alt="Person moving toward change">
+              <img src="assets/images/bento-growth.jpg" alt="Person moving toward change and growth">
               <div class="journey-bcard-img-overlay"></div>
             </div>
             <div class="journey-bcard-content">

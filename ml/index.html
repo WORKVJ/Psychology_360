@@ -87,96 +87,70 @@
   </div>
 
   <main>
-    <!-- HERO SECTION -->
-    <section class="hero-sec">
-      <div class="container hero-container">
-        <div class="hero-editorial-wrap">
-          
-          <!-- LEFT COLUMN -->
-          <div class="hero-left-col">
-            <h1 class="hero-large-title">
-              Understand<br>
-              what moves<br>
-              <span class="hero-title-accent">you.</span>
-            </h1>
-            
-            <p class="hero-supporting-text">
-              പ്രൊഫഷണൽ വൈദഗ്ധ്യവും ആർദ്രതയും ഒന്നിക്കുന്ന തെറാപ്പി സേവനങ്ങൾ. വൈകാരിക പ്രതിരോധശേഷിയും മാനസിക സന്തുലിതാവസ്ഥയും കൈവരിക്കാൻ സഹായിക്കുന്നു.
-            </p>
-            
-            <div class="hero-actions">
-              <a href="contact/index.html" class="btn-lakshya">
-                <span class="btn-icon">✦</span>
-                <span>സെഷൻ ബുക്ക് ചെയ്യുക</span>
-              </a>
-              <a href="services/index.html" class="callback-link">ഞങ്ങളുടെ സേവനങ്ങൾ ↗</a>
-            </div>
+    <section class="hero-sec-redesign">
+      <div class="hero-bg-overlay"></div>
+      <div class="container hero-container-redesign">
+        
+        <!-- Hero main elements: Left-aligned title + Floating right ratings card -->
+        <div class="hero-main-row">
+          <div class="hero-content-left-wrapper">
+            <h1 class="hero-title-redesign js-split-text">വൈകാരിക ശാക്തീകരണം.<br>പ്രത്യാശയുടെ വീണ്ടെടുപ്പ്.<br>ജീവിത പരിവർത്തനം.</h1>
           </div>
-
-          <!-- RIGHT COLUMN -->
-          <div class="hero-right-col">
-            <div class="hero-visual-frame-container">
-              <!-- Soft rounded card backdrop -->
-              <div class="hero-backdrop-card"></div>
-
-              <!-- Portrait of the person -->
-              <div class="hero-subject-portrait">
-                <img src="../assets/images/hero-reflective.jpg" alt="Thoughtful reflective portrait representing mental clarity and connection">
-              </div>
-
-              <!-- Floating Widget 1: Client reviews (bottom left) -->
-              <div class="hero-widget widget-reviews">
-                <div class="widget-inner" style="display: flex; align-items: center; gap: 0.8rem;">
-                  <div class="widget-avatars">
-                    <img src="../assets/images/avatar-1.jpg" alt="Avatar">
-                    <img src="../assets/images/avatar-2.jpg" alt="Avatar">
-                    <img src="../assets/images/avatar-3.jpg" alt="Avatar">
-                  </div>
-                  <div class="widget-reviews-text">
-                    <strong>4.9 / 5</strong>
-                    <span>1200+ കൗൺസിലിംഗുകൾ</span>
-                  </div>
+          
+          <div class="hero-col-right-float">
+            <div class="hero-ratings-card-wrap">
+              <div class="hero-ratings-card-redesign">
+                <div class="rating-card-content active" data-theme="red">
+                  <div class="rating-stars">★★★★★</div>
+                  <h3 class="rating-title">10 വർഷം</h3>
+                  <p class="rating-subtitle">പ്രൊഫഷണൽ ക്ലിനിക്കൽ പരിചയം</p>
                 </div>
-              </div>
-
-              <!-- Floating Widget 2: Session Count Stats (top right) -->
-              <div class="hero-widget widget-stats">
-                <div class="widget-inner">
-                  <div class="widget-stats-info">
-                    <strong>10,000+</strong>
-                    <span>സെഷനുകൾ പൂർത്തിയായി</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Floating Widget 3: Trend Chart (next to stats) -->
-              <div class="hero-widget widget-chart">
-                <div class="widget-inner" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
-                  <svg viewBox="0 0 50 30" class="widget-chart-svg">
-                    <path d="M5,25 L15,18 L25,22 L35,10 L45,5" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </div>
-              </div>
-
-              <!-- Floating Widget 4: Confidentiality Progress (bottom right) -->
-              <div class="hero-widget widget-confidential">
-                <div class="widget-inner" style="display: flex; align-items: center; gap: 0.8rem;">
-                  <div class="widget-radial-progress">
-                    <svg viewBox="0 0 36 36" class="widget-radial-svg">
-                      <path class="radial-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#D8E8E1" stroke-width="3"/>
-                      <path class="radial-bar" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--color-primary)" stroke-width="3"/>
-                    </svg>
-                    <span class="widget-radial-icon">🔒</span>
-                  </div>
-                  <div class="widget-confidential-text">
-                    <strong>100%</strong>
-                    <span>രഹസ്യസ്വഭാവം</span>
-                  </div>
+                <div class="rating-card-content" data-theme="white">
+                  <div class="rating-stars">★★★★★</div>
+                  <h3 class="rating-title">99%</h3>
+                  <p class="rating-subtitle">പോസിറ്റീവ് തെറാപ്പി ഫലങ്ങൾ</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Hero bottom row info elements -->
+        <div class="hero-bottom-row">
+          
+          <!-- Col 1: Circular spinning play badge -->
+          <div class="hero-bottom-col-left">
+            <div class="circular-play-badge">
+              <svg viewBox="0 0 100 100" class="circular-text-svg">
+                <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
+                <text font-size="7.2" font-weight="800" fill="#fff" letter-spacing="1.8px">
+                  <textPath href="#circlePath">PSYCHOLOGY 360 • വൈകാരിക സൗഖ്യം • </textPath>
+                </text>
+              </svg>
+              <div class="play-icon-center">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="#ff3b30"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Col 2: Large Accent Number/Text Badge -->
+          <div class="hero-bottom-col-center">
+            <span class="large-number-accent">360°</span>
+            <div class="badge-text-desc">
+              <strong>ശാസ്ത്രീയ കൗൺസിലിംഗ്</strong>
+              <span>നിങ്ങളുടെ മാനസിക സന്തുലിതാവസ്ഥയ്ക്ക്</span>
+            </div>
+          </div>
+
+          <!-- Col 3: Bottom Right Description Block -->
+          <div class="hero-bottom-col-right">
+            <p class="hero-bottom-desc">
+              വ്യത്യസ്തമായ വൈകാരിക പ്രശ്നങ്ങൾക്കും ബന്ധങ്ങളിലെ പ്രതിസന്ധികൾക്കും ശാസ്ത്രീയവും സഹാനുഭൂതി നിറഞ്ഞതുമായ തെറാപ്പി പിന്തുണ സൈക്കോളജി 360 വാഗ്ദാനം ചെയ്യുന്നു.
+            </p>
+          </div>
+
+        </div>
+
       </div>
     </section>
 
@@ -194,84 +168,102 @@
       </div>
     </section>
 
-    <!-- SECTION 3 — 360° JOURNEY VIEWPORT-PINNED -->
-    <section class="journey-pinned-sec">
-      <div class="journey-pinned-wrap">
-        <div class="journey-pinned-left">
-          <span class="prof-card-specialization">വളർച്ചാ ഘട്ടങ്ങൾ</span>
-          <h2>നിങ്ങളെത്തന്നെ മനസ്സിലാക്കുക</h2>
-          <p style="margin-top: 1rem;">
-            പരിശോധനകളിൽ നിന്നും സ്വയംപര്യാപ്തതയിലേക്കുള്ള ഞങ്ങളുടെ തെറാപ്പി വഴികൾ താഴെ സ്ക്രോൾ ചെയ്തു വായിക്കാം.
-          </p>
-          
-          <div class="journey-category-indicator-wrap">
-            <div class="journey-indicator-item active">
-              <span class="journey-indicator-num">01</span>
-              <span>നിങ്ങളെത്തന്നെ അറിയുക</span>
-            </div>
-            <div class="journey-indicator-item">
-              <span class="journey-indicator-num">02</span>
-              <span>വികാരങ്ങൾ നിയന്ത്രിക്കുക</span>
-            </div>
-            <div class="journey-indicator-item">
-              <span class="journey-indicator-num">03</span>
-              <span>ബന്ധങ്ങൾ ദൃഢമാക്കുക</span>
-            </div>
-            <div class="journey-indicator-item">
-              <span class="journey-indicator-num">04</span>
-              <span>മാറ്റങ്ങളിലേക്ക് നയിക്കുക</span>
-            </div>
+    <!-- SECTION 3 — 360° JOURNEY BENTO GRID -->
+    <section class="journey-bento-sec" id="journey-section">
+      <div class="container">
+
+        <!-- Section Header -->
+        <div class="journey-bento-header">
+          <div class="journey-bento-header-left">
+            <span class="journey-eyebrow"><span></span> നിങ്ങളുടെ 360° യാത്ര <span></span></span>
+            <h2 class="journey-bento-title js-split-text">ഞങ്ങൾ എങ്ങനെ<br>നിങ്ങളോടൊപ്പം സഞ്ചരിക്കുന്നു.</h2>
+          </div>
+          <div class="journey-bento-header-right">
+            <p class="journey-bento-subtitle">നിങ്ങളെത്തന്നെ മനസ്സിലാക്കുന്നതു മുതൽ ശാശ്വതമായ വൈകാരിക പ്രതിരോധശേഷി വരെയുള്ള ഘടനാപരമായ സഹാനുഭൂതി യാത്ര.</p>
+            <a href="../contact/index.html" class="journey-bento-cta">നിങ്ങളുടെ യാത്ര ആരംഭിക്കുക ↗</a>
           </div>
         </div>
 
-        <div class="journey-pinned-right">
-          <!-- Backing rotating circles path vector graphic -->
-          <div class="journey-orbit-graphic-container">
-            <svg class="journey-orbit-graphic" viewBox="0 0 200 200">
-              <circle cx="100" cy="100" r="85" stroke="var(--color-primary)" stroke-width="1" stroke-dasharray="8 4" fill="none"/>
-              <circle cx="100" cy="100" r="50" stroke="var(--color-primary)" stroke-width="0.8" fill="none"/>
-              <circle cx="185" cy="100" r="4" fill="var(--color-accent)"/>
-              <circle cx="15" cy="100" r="3" fill="var(--color-primary)"/>
-            </svg>
+        <!-- Bento Grid -->
+        <div class="journey-bento-grid">
+
+          <!-- Card 1: tall left -->
+          <div class="journey-bcard journey-bcard--tall journey-bcard--accent-violet">
+            <div class="journey-bcard-img-wrap">
+              <img src="../assets/images/bento-understanding.jpg" alt="Person in quiet self-reflection">
+              <div class="journey-bcard-img-overlay"></div>
+            </div>
+            <div class="journey-bcard-content">
+              <span class="journey-bcard-phase">01 — ഒന്നാം ഘട്ടം</span>
+              <h3 class="journey-bcard-title">നിങ്ങളെത്തന്നെ<br>അറിയുക</h3>
+              <p class="journey-bcard-desc">വ്യക്തതയോടെ ആരംഭിക്കുക. നിങ്ങളുടെ വൈകാരിക പ്രശ്നങ്ങൾ കണ്ടെത്താനും മുൻകാല ചരിത്രം മനസ്സിലാക്കാനും ലക്ഷ്യങ്ങൾ സജ്ജീകരിക്കാനും ഇൻടേക്ക് സെഷനുകൾ സഹായിക്കുന്നു.</p>
+              <div class="journey-bcard-tags">
+                <span>പ്രാഥമിക വിലയിруത്തൽ</span>
+                <span>ചരിത്ര മാപ്പിംഗ്</span>
+                <span>ലക്ഷ്യങ്ങൾ നിശ്ചയിക്കൽ</span>
+              </div>
+            </div>
+            <div class="journey-bcard-num">01</div>
           </div>
 
-          <!-- Step 1 -->
-          <div class="journey-card-pane">
-            <div class="journey-card-editorial">
-              <span class="prof-card-specialization">ഘട്ടം 01</span>
-              <h3>നിങ്ങളെത്തന്നെ അറിയുക</h3>
-              <p>[Actual Service Description: Initial mental health diagnostic intake and evaluation sessions. We align with you to explore distress triggers, gather history context, and identify structural objectives.]</p>
+          <!-- Card 2: top right wide -->
+          <div class="journey-bcard journey-bcard--wide journey-bcard--accent-terracotta">
+            <div class="journey-bcard-img-wrap">
+              <img src="../assets/images/bento-emotions.jpg" alt="Abstract color representations of emotions">
+              <div class="journey-bcard-img-overlay"></div>
             </div>
+            <div class="journey-bcard-content">
+              <span class="journey-bcard-phase">02 — രണ്ടാം ഘട്ടം</span>
+              <h3 class="journey-bcard-title">വികാരങ്ങൾ നിയന്ത്രിക്കുക</h3>
+              <p class="journey-bcard-desc">വൈകാരിക സാക്ഷരത വളർത്തുക. സങ്കീർണ്ണമായ വികാരങ്ങളെ മനസ്സിലാക്കാനും നിയന്ത്രിക്കാനും പ്രകടിപ്പിക്കാനും പഠിക്കുക. സമ്മർദ്ദവും ഉത്കണ്ഠയും കുറയ്ക്കുന്നതിനുള്ള ക്ലിനിക്കൽ തന്ത്രങ്ങൾ.</p>
+              <div class="journey-bcard-tags">
+                <span>വൈകാരിക സാക്ഷരത</span>
+                <span>ഉത്കണ്ഠ നിയന്ത്രണം</span>
+                <span>സമ്മർദ്ദം തരണം ചെയ്യൽ</span>
+              </div>
+            </div>
+            <div class="journey-bcard-num">02</div>
           </div>
 
-          <!-- Step 2 -->
-          <div class="journey-card-pane">
-            <div class="journey-card-editorial">
-              <span class="prof-card-specialization">ഘട്ടം 02</span>
-              <h3>വികാരങ്ങൾ നിയന്ത്രിക്കുക</h3>
-              <p>[Actual Service Description: Developing emotional literacy to sit with, regulate, and express complex feelings. Learn clinical coping strategies to reduce immediate stress, anxiety levels, and depressive weights.]</p>
+          <!-- Card 3: bottom center square -->
+          <div class="journey-bcard journey-bcard--square journey-bcard--accent-teal">
+            <div class="journey-bcard-img-wrap">
+              <img src="../assets/images/bento-relationships.jpg" alt="Hands holding flowers, symbolizing relationship support">
+              <div class="journey-bcard-img-overlay"></div>
             </div>
+            <div class="journey-bcard-content">
+              <span class="journey-bcard-phase">03 — മൂന്നാം ഘട്ടം</span>
+              <h3 class="journey-bcard-title">ബന്ധങ്ങൾ<br>ദൃഢമാക്കുക</h3>
+              <p class="journey-bcard-desc">ബന്ധങ്ങളും ആശയവിനിമയങ്ങളും മെച്ചപ്പെടുത്തുക. അതിരുകൾ നിർവചിക്കുകയും കുടുംബം, മാതാപിതാക്കൾ, പങ്കാളികൾ എന്നിവർക്കിടയിൽ സുരക്ഷിതമായ ബന്ധങ്ങൾ പുനഃസ്ഥാപിക്കുകയും ചെയ്യുക.</p>
+              <div class="journey-bcard-tags">
+                <span>ബന്ധങ്ങളുടെ സ്വഭാവം</span>
+                <span>കുടുംബ ക്രമീകരണം</span>
+                <span>അതിരുകൾ</span>
+              </div>
+            </div>
+            <div class="journey-bcard-num">03</div>
           </div>
 
-          <!-- Step 3 -->
-          <div class="journey-card-pane">
-            <div class="journey-card-editorial">
-              <span class="prof-card-specialization">ഘട്ടം 03</span>
-              <h3>ബന്ധങ്ങൾ ദൃഢമാക്കുക</h3>
-              <p>[Actual Service Description: Analyzing patterns in communication, attachment profiles, and boundary definitions. Restoring safe alignment in family systems, parenting approaches, and partner frameworks.]</p>
+          <!-- Card 4: bottom far right square -->
+          <div class="journey-bcard journey-bcard--square journey-bcard--accent-lavender">
+            <div class="journey-bcard-img-wrap">
+              <img src="../assets/images/bento-growth.jpg" alt="Person moving toward change and growth">
+              <div class="journey-bcard-img-overlay"></div>
             </div>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="story-card-pane journey-card-pane">
-            <div class="journey-card-editorial">
-              <span class="prof-card-specialization">ഘട്ടം 04</span>
-              <h3>മാറ്റങ്ങളിലേക്ക് നയിക്കുക</h3>
-              <p>[Actual Service Description: Achieving integration and self-sustaining growth patterns. Consolidate healthy habits, establish safe boundary maps, and move forward into self-driven developmental phases.]</p>
+            <div class="journey-bcard-content">
+              <span class="journey-bcard-phase">04 — നാലാം ഘട്ടം</span>
+              <h3 class="journey-bcard-title">മാറ്റങ്ങളിലേക്ക്<br>നയിക്കുക</h3>
+              <p class="journey-bcard-desc">ആരോഗ്യകരമായ ശീലങ്ങൾ ഏകീകരിക്കുകയും സുരക്ഷിതമായ അതിരുകൾ സ്ഥാപിച്ച് മുന്നോട്ട് പോകുകയും ചെയ്യുക.</p>
+              <div class="journey-bcard-tags">
+                <span>ഏകോപനം</span>
+                <span>ദീർഘകാല പ്രതിരോധശേഷി</span>
+                <span>സ്ഥിരമായ വളർച്ച</span>
+              </div>
             </div>
+            <div class="journey-bcard-num">04</div>
           </div>
-        </div>
-      </div>
+        </div> <!-- Closes .journey-bento-grid -->
+      </div> <!-- Closes .container -->
     </section>
 
     <!-- SECTION 4 — SERVICES INTERACTIVE LIST -->
@@ -282,9 +274,9 @@
 
       <div class="container services-panel-grid">
         <div class="services-sticky-col">
-          <span class="prof-card-specialization">സേവനങ്ങൾ</span>
-          <h2>ഞങ്ങൾ എങ്ങനെ പിന്തുണയ്ക്കുന്നു</h2>
-          <p style="max-width: 440px; margin-bottom: 2.5rem;">
+          <span class="services-eyebrow"><span></span> സേവനങ്ങൾ <span></span></span>
+          <h2 class="services-main-title js-split-text">ഞങ്ങൾ എങ്ങനെ<br>പിന്തുണയ്ക്കുന്നു</h2>
+          <p class="services-main-desc">
             വ്യത്യസ്തമായ വൈകാരിക പ്രശ്നങ്ങൾക്കും കരിയർ പ്രതിസന്ധികൾക്കും കസ്റ്റമൈസ്ഡ് കൗൺസിലിംഗുകൾ ഞങ്ങൾ വാഗ്ദാനം ചെയ്യുന്നു.
           </p>
 

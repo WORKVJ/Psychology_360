@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Register GSAP ScrollTrigger
   gsap.registerPlugin(ScrollTrigger);
 
-  // --- 0. BACKGROUND MESH GRADIENT DRIFT ---
+  // --- 0. BACKGROUND MESH GRADIENT DRIFT (DISABLED FOR PERFORMANCE & SNAPPY SCROLLING) ---
+  /*
   gsap.to('.glow-1', {
     x: '30vw',
     y: '15vh',
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     yoyo: true,
     ease: 'sine.inOut'
   });
+  */
 
   // --- 0.5. TEXT SPLITTING UTILITY ENGINE ---
   const splitTextElements = document.querySelectorAll('.js-split-text');
@@ -61,114 +63,69 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- 1. HERO ENTRY ANIMATION CHOREOGRAPHY ---
-  const heroTL = gsap.timeline();
+  if (document.querySelector('.hero-sec-redesign')) {
+    const heroTL = gsap.timeline();
 
-  // Reveal main hero block
-  heroTL.fromTo('.hero-sec-redesign', {
-    opacity: 0
-  }, {
-    opacity: 1,
-    duration: 1,
-    ease: 'power3.out'
-  });
+    // Reveal main hero block
+    heroTL.fromTo('.hero-sec-redesign', {
+      opacity: 0
+    }, {
+      opacity: 1,
+      duration: 1.2,
+      ease: 'power2.out'
+    });
 
-  // Animate header navigation items slide-down
-  heroTL.fromTo('header', {
-    y: -30,
-    opacity: 0
-  }, {
-    y: 0,
-    opacity: 1,
-    duration: 0.8,
-    ease: 'power3.out'
-  }, '-=0.6');
+    // Animate header navigation items slide-down
+    heroTL.fromTo('header', {
+      y: -30,
+      opacity: 0
+    }, {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      ease: 'power3.out'
+    }, '-=0.8');
 
-  // Title cinematic slide up (Split word stagger)
-  heroTL.fromTo('.hero-title-redesign .split-word', {
-    y: '110%',
-    opacity: 0
-  }, {
-    y: '0%',
-    opacity: 1,
-    stagger: 0.05,
-    duration: 1.1,
-    ease: 'power4.out'
-  }, '-=0.7');
+    // Title cinematic slide up (Split word stagger)
+    if (document.querySelector('.hero-title-redesign')) {
+      heroTL.fromTo('.hero-title-redesign .split-word', {
+        y: '110%',
+        opacity: 0
+      }, {
+        y: '0%',
+        opacity: 1,
+        stagger: 0.05,
+        duration: 1.2,
+        ease: 'power4.out'
+      }, '-=0.6');
+    }
 
-  // Stagger left column contents
-  heroTL.fromTo('.hero-desc-redesign, .hero-pill-btn-left', {
-    y: 25,
-    opacity: 0
-  }, {
-    y: 0,
-    opacity: 1,
-    stagger: 0.12,
-    duration: 0.9,
-    ease: 'power3.out'
-  }, '-=0.8');
+    // Right ratings card slide in
+    if (document.querySelector('.hero-ratings-card-redesign')) {
+      heroTL.fromTo('.hero-ratings-card-redesign', {
+        x: 40,
+        opacity: 0
+      }, {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: 'power3.out'
+      }, '-=0.8');
+    }
 
-  // Center column visual reveal (Orbital rings and portrait cutout)
-  heroTL.fromTo('.hero-orbital-rings', {
-    scale: 0.82,
-    opacity: 0
-  }, {
-    scale: 1,
-    opacity: 1,
-    duration: 1,
-    ease: 'power3.out'
-  }, '-=0.9');
-
-  heroTL.fromTo('.hero-counselor-img', {
-    scale: 0.92,
-    y: 50,
-    opacity: 0
-  }, {
-    scale: 1,
-    y: 0,
-    opacity: 1,
-    duration: 1.2,
-    ease: 'power4.out'
-  }, '-=0.8');
-
-  heroTL.fromTo('.hero-bottom-floating-actions', {
-    y: 15,
-    opacity: 0
-  }, {
-    y: 0,
-    opacity: 1,
-    duration: 0.8,
-    ease: 'power3.out'
-  }, '-=0.6');
-
-  // Right column card reveal
-  heroTL.fromTo('.hero-ratings-card-redesign', {
-    x: 30,
-    opacity: 0
-  }, {
-    x: 0,
-    opacity: 1,
-    duration: 1,
-    ease: 'power3.out'
-  }, '-=0.9');
-
-  // --- 1.5. LOOPING FLOATS FOR DECORATIVE DOODLES ---
-  gsap.to('.hero-doodle-sparkle-left svg, .hero-doodle-sparkle-right svg', {
-    scale: 1.15,
-    duration: 1.8,
-    ease: 'sine.inOut',
-    repeat: -1,
-    yoyo: true,
-    stagger: 0.4
-  });
-
-  gsap.to('.hero-doodle-arrow', {
-    y: 3,
-    x: -2,
-    duration: 3,
-    ease: 'sine.inOut',
-    repeat: -1,
-    yoyo: true
-  });
+    // Bottom row reveal
+    if (document.querySelector('.hero-bottom-row')) {
+      heroTL.fromTo('.hero-bottom-row', {
+        y: 30,
+        opacity: 0
+      }, {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: 'power3.out'
+      }, '-=0.9');
+    }
+  }
 
   // --- 2. SECTION 2 STATEMENT PROGRESSIVE REVEAL ---
   const statementWords = document.querySelectorAll('.statement-reveal-word');
@@ -199,7 +156,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 3. 360° JOURNEY BENTO GRID REVEAL ---
   const bentoGrid = document.querySelector('.journey-bento-grid');
   if (bentoGrid) {
-    gsap.fromTo('.journey-bento-header-left, .journey-bento-header-right', {
+    // Unified timeline for bento header and title words to avoid layout shift bugs
+    const journeyTL = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.journey-bento-sec',
+        start: 'top 75%'
+      }
+    });
+
+    journeyTL.fromTo('.journey-bento-header-left, .journey-bento-header-right', {
       opacity: 0,
       y: 30
     }, {
@@ -207,28 +172,21 @@ document.addEventListener('DOMContentLoaded', () => {
       y: 0,
       duration: 0.8,
       stagger: 0.12,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '.journey-bento-sec',
-        start: 'top 80%'
-      }
+      ease: 'power3.out'
     });
 
-    // Stagger reveal split words in Bento Title
-    gsap.fromTo('.journey-bento-title .split-word', {
-      y: '100%',
-      opacity: 0
-    }, {
-      y: '0%',
-      opacity: 1,
-      stagger: 0.04,
-      duration: 1,
-      ease: 'power4.out',
-      scrollTrigger: {
-        trigger: '.journey-bento-title',
-        start: 'top 80%'
-      }
-    });
+    if (document.querySelector('.journey-bento-title .split-word')) {
+      journeyTL.fromTo('.journey-bento-title .split-word', {
+        y: '100%',
+        opacity: 0
+      }, {
+        y: '0%',
+        opacity: 1,
+        stagger: 0.04,
+        duration: 0.8,
+        ease: 'power3.out'
+      }, '-=0.6');
+    }
 
     // Glass bento cards roll-in
     gsap.fromTo('.journey-bcard', {
@@ -279,20 +237,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Stagger reveal split words in Services Title
-    gsap.fromTo('.services-main-title .split-word', {
-      y: '100%',
-      opacity: 0
-    }, {
-      y: '0%',
-      opacity: 1,
-      stagger: 0.04,
-      duration: 1,
-      ease: 'power4.out',
-      scrollTrigger: {
-        trigger: '.services-main-title',
-        start: 'top 80%'
-      }
-    });
+    if (document.querySelector('.services-main-title .split-word')) {
+      gsap.fromTo('.services-main-title .split-word', {
+        y: '100%',
+        opacity: 0
+      }, {
+        y: '0%',
+        opacity: 1,
+        stagger: 0.04,
+        duration: 1,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: servicesSec,
+          start: 'top 80%'
+        }
+      });
+    }
 
     // Stagger reveal service accordion rows
     gsap.fromTo('.service-row-item', {

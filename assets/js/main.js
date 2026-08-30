@@ -1,27 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isTouchDevice = !window.matchMedia('(any-hover: hover)').matches;
+  const isDesktop = window.innerWidth >= 768;
 
   // --- 1. LENIS SMOOTH SCROLL ---
+  // --- 1. LENIS SMOOTH SCROLL (DISABLED PER USER REQUEST) ---
   let lenisInstance = null;
-  if (!prefersReducedMotion && typeof Lenis !== 'undefined') {
-    lenisInstance = new Lenis({
-      duration: 1.25,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1,
-      smoothTouch: false,
-    });
-
-    if (typeof ScrollTrigger !== 'undefined') {
-      lenisInstance.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add((time) => {
-        lenisInstance.raf(time * 1000);
-      });
-      gsap.ticker.lagSmoothing(0);
-    }
-  }
 
   // --- 2. SCROLL PROGRESS BAR ---
   const progressBar = document.querySelector('.scroll-progress-bar');
@@ -36,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 3. HEADER STATE ---
   const header = document.querySelector('header');
   const checkHeaderScroll = () => {
+    if (!header) return;
     if (window.scrollY > 50) {
       header.classList.add('scrolled');
     } else {
@@ -46,12 +31,23 @@ document.addEventListener('DOMContentLoaded', () => {
   checkHeaderScroll();
 
   // --- 4. CUSTOM CURSOR & SPOTLIGHTS ---
-  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  if (!prefersReducedMotion && !isTouchDevice) {
+  // Use screen width check — always enabled on desktop, skipped on mobile
+  if (isDesktop) {
     const cursor = document.createElement('div');
     cursor.className = 'custom-cursor';
     const follower = document.createElement('div');
     follower.className = 'custom-cursor-follower';
+    
+    // Create logo container and text container inside the follower
+    const followerInner = document.createElement('div');
+    followerInner.className = 'custom-cursor-follower-inner';
+    
+    const followerText = document.createElement('span');
+    followerText.className = 'custom-cursor-text';
+    
+    follower.appendChild(followerInner);
+    follower.appendChild(followerText);
+    
     document.body.appendChild(cursor);
     document.body.appendChild(follower);
 
@@ -59,15 +55,20 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.set(cursor, { xPercent: -50, yPercent: -50 });
     gsap.set(follower, { xPercent: -50, yPercent: -50 });
 
-    // GSAP quickTo setters for physics-based fluid spring cursor
-    const cursorX = gsap.quickTo(cursor, "x", { duration: 0.08, ease: "power3.out" });
-    const cursorY = gsap.quickTo(cursor, "y", { duration: 0.08, ease: "power3.out" });
-    const followerX = gsap.quickTo(follower, "x", { duration: 0.35, ease: "power3.out" });
-    const followerY = gsap.quickTo(follower, "y", { duration: 0.35, ease: "power3.out" });
+    // GSAP quickTo setters for physics-based fluid spring cursor (follower only)
+    const followerX = gsap.quickTo(follower, "x", { duration: 0.12, ease: "power2.out" });
+    const followerY = gsap.quickTo(follower, "y", { duration: 0.12, ease: "power2.out" });
 
+    let cursorVisible = false;
     window.addEventListener('mousemove', (e) => {
-      cursorX(e.clientX);
-      cursorY(e.clientY);
+      if (!cursorVisible) {
+        gsap.to([cursor, follower], { opacity: 1, duration: 0.2, ease: "power2.out" });
+        cursorVisible = true;
+      }
+      // Inner dot follows mouse instantly for perfect responsiveness
+      gsap.set(cursor, { x: e.clientX, y: e.clientY });
+      
+      // Outer spinning logo catches up quickly but smoothly
       followerX(e.clientX);
       followerY(e.clientY);
     });
@@ -94,13 +95,53 @@ document.addEventListener('DOMContentLoaded', () => {
     serviceRowsCursor.forEach(el => {
       el.addEventListener('mouseenter', () => {
         follower.classList.add('view-mode');
-        follower.textContent = 'VIEW';
+        followerText.textContent = 'VIEW';
       });
       el.addEventListener('mouseleave', () => {
         follower.classList.remove('view-mode');
-        follower.textContent = '';
+        followerText.textContent = '';
       });
     });
+  }
+
+  // --- 4.2. HERO RATINGS CARD ROTATOR ---
+  const ratingsCard = document.querySelector('.hero-ratings-card-redesign');
+  if (ratingsCard) {
+    const contents = ratingsCard.querySelectorAll('.rating-card-content');
+    let currentIndex = 0;
+
+    // Set initial theme
+    ratingsCard.classList.add('theme-' + contents[0].getAttribute('data-theme'));
+
+    const swapContent = () => {
+      const currentContent = contents[currentIndex];
+      currentIndex = (currentIndex + 1) % contents.length;
+      const nextContent = contents[currentIndex];
+
+      // Fade out current
+      gsap.to(currentContent, {
+        opacity: 0,
+        y: -8,
+        duration: 0.3,
+        onComplete: () => {
+          currentContent.style.visibility = 'hidden';
+          currentContent.classList.remove('active');
+
+          // Fade in next
+          nextContent.style.visibility = 'visible';
+          nextContent.classList.add('active');
+          gsap.fromTo(nextContent, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.3 });
+
+          // Swap card theme class
+          const theme = nextContent.getAttribute('data-theme');
+          ratingsCard.classList.remove('theme-red', 'theme-white');
+          ratingsCard.classList.add('theme-' + theme);
+        }
+      });
+    };
+
+    // Swap every 2 seconds
+    setInterval(swapContent, 2000);
   }
 
   // --- 4.5. CARD HOVER SPOTLIGHT TRACKER ---
@@ -131,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 6. MOUSE REACTIVE HERO PARALLAX (3D DEPTH EFFECT) ---
+  // --- 6. MOUSE REACTIVE HERO PARALLAX (SUBTLE BG & FLOATING CARD PARALLAX) ---
   const heroSec = document.querySelector('.hero-sec-redesign');
   if (heroSec && !prefersReducedMotion && !isTouchDevice) {
     heroSec.addEventListener('mousemove', (e) => {
@@ -140,27 +181,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const mouseX = e.clientX - w / 2;
       const mouseY = e.clientY - h / 2;
 
-      // 3D rotation tilt of the visual container itself
-      gsap.to('.hero-visual-system-redesign', {
-        rotationY: mouseX * 0.025,
-        rotationX: -mouseY * 0.025,
-        transformPerspective: 1200,
-        transformOrigin: "center center",
-        duration: 0.8,
-        ease: 'power2.out'
-      });
-
       // Parallax depths for layers
-      gsap.to('.hero-orbital-rings', { x: mouseX * 0.012, y: mouseY * 0.012, duration: 0.7, ease: 'power2.out' });
-      gsap.to('.hero-counselor-img', { x: mouseX * 0.02, y: mouseY * 0.02, duration: 0.6, ease: 'power2.out' });
-      gsap.to('.hero-ratings-card-redesign', { x: mouseX * 0.035, y: mouseY * 0.035, duration: 0.5, ease: 'power2.out' });
-      gsap.to('.hero-pill-btn-left', { x: mouseX * 0.01, y: mouseY * 0.01, duration: 0.6, ease: 'power2.out' });
+      gsap.to('.hero-ratings-card-redesign', { x: mouseX * 0.025, y: mouseY * 0.025, duration: 0.5, ease: 'power2.out' });
+      gsap.to(heroSec, { backgroundPosition: `calc(50% + ${mouseX * 0.015}px) calc(50% + ${mouseY * 0.015}px)`, duration: 0.8, ease: 'power2.out' });
     });
     
-    // Reset 3D tilt on mouse leave
+    // Reset tilt on mouse leave
     heroSec.addEventListener('mouseleave', () => {
-      gsap.to('.hero-visual-system-redesign', { rotationY: 0, rotationX: 0, duration: 1.2, ease: 'power3.out' });
-      gsap.to('.hero-orbital-rings, .hero-counselor-img, .hero-ratings-card-redesign, .hero-pill-btn-left', { x: 0, y: 0, duration: 1.2, ease: 'power3.out' });
+      gsap.to('.hero-ratings-card-redesign', { x: 0, y: 0, duration: 1.2, ease: 'power3.out' });
+      gsap.to(heroSec, { backgroundPosition: '50% 50%', duration: 1.2, ease: 'power3.out' });
     });
   }
 
