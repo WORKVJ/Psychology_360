@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Manjari:wght@400;700&family=Noto+Sans+Malayalam:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Manjari:wght@400;700&family=Noto+Sans+Malayalam:wght@300;400;500;600;700&display=swap');
 
 /* --- COLOR & TYPOGRAPHY SYSTEM --- */
 :root {
@@ -626,6 +626,7 @@ header.scrolled {
   overflow: visible;
   display: flex;
   justify-content: center;
+  margin-top: -65px; /* Shifting the counselor image higher up */
 }
 
 .hero-counselor-img {
@@ -2126,4 +2127,9 @@ footer {
   .custom-cursor, .custom-cursor-follower {
     display: none !important;
   }
+}
+
+/* Hide language switcher globally per user request */
+.lang-switcher {
+  display: none !important;
 }
