@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- 6. MOUSE REACTIVE HERO PARALLAX ---
-  const heroSec = document.querySelector('.hero-sec');
+  const heroSec = document.querySelector('.hero-sec-redesign');
   if (heroSec && !prefersReducedMotion && !isTouchDevice) {
     heroSec.addEventListener('mousemove', (e) => {
       const w = window.innerWidth;
@@ -132,11 +132,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const mouseX = e.clientX - w / 2;
       const mouseY = e.clientY - h / 2;
 
-      gsap.to('.hero-bg-blur', { x: mouseX * 0.005, y: mouseY * 0.005, duration: 0.8, ease: 'power2.out' });
-      gsap.to('.hero-orbital-background', { x: mouseX * 0.012, y: mouseY * 0.012, duration: 0.6, ease: 'power2.out' });
-      gsap.to('.hero-visual-gradient', { x: mouseX * 0.02, y: mouseY * 0.02, duration: 0.5, ease: 'power2.out' });
-      gsap.to('.hero-portrait-mask', { x: mouseX * 0.03, y: mouseY * 0.03, duration: 0.4, ease: 'power2.out' });
-      gsap.to('.hero-foreground-element', { x: mouseX * 0.05, y: mouseY * 0.05, duration: 0.3, ease: 'power2.out' });
+      gsap.to('.hero-orbital-rings', { x: mouseX * 0.015, y: mouseY * 0.015, duration: 0.7, ease: 'power2.out' });
+      gsap.to('.hero-counselor-img', { x: mouseX * 0.025, y: mouseY * 0.025, duration: 0.5, ease: 'power2.out' });
+      gsap.to('.hero-ratings-card-redesign', { x: mouseX * 0.038, y: mouseY * 0.038, duration: 0.4, ease: 'power2.out' });
+      gsap.to('.hero-pill-btn-left', { x: mouseX * 0.012, y: mouseY * 0.012, duration: 0.6, ease: 'power2.out' });
     });
   }
 

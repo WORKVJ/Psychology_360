@@ -1,15 +1,15 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) return;
 
   // Register GSAP ScrollTrigger
   gsap.registerPlugin(ScrollTrigger);
 
-  // --- 1. HERO ENTRY ANIMATION CHOREOGRAPHY ---
+  // --- 1. HERO ENTRY ANIMATION CHOREOGRAPHY (REDESIGNED) ---
   const heroTL = gsap.timeline();
 
   // Fade hero container
-  heroTL.fromTo('.hero-sec', {
+  heroTL.fromTo('.hero-sec-redesign', {
     opacity: 0
   }, {
     opacity: 1,
@@ -28,171 +28,91 @@ document.addEventListener('DOMContentLoaded', () => {
     ease: 'power3.out'
   }, '-=0.8');
 
-  // Backdrop card scales up
-  heroTL.fromTo('.hero-backdrop-card', {
-    scale: 0.9,
-    opacity: 0
-  }, {
-    scale: 1,
-    opacity: 1,
-    duration: 1.2,
-    ease: 'power3.out'
-  }, '-=0.8');
-
-  // Portrait reveals
-  heroTL.fromTo('.hero-subject-portrait img', {
-    y: 45,
-    opacity: 0
-  }, {
-    y: 0,
-    opacity: 1,
-    duration: 1.4,
-    ease: 'power3.out'
-  }, '-=1.0');
-
-  // Headline reveals
-  heroTL.fromTo('.hero-large-title', {
+  // Title cinematic slide up
+  heroTL.fromTo('.hero-title-redesign', {
     y: 50,
     opacity: 0
   }, {
     y: 0,
     opacity: 1,
-    duration: 1.2,
+    duration: 1.3,
     ease: 'power3.out'
-  }, '-=1.1');
+  }, '-=0.9');
 
-  // Supporting text reveals
-  heroTL.fromTo('.hero-supporting-text', {
+  // Stagger left column contents
+  heroTL.fromTo('.hero-desc-redesign, .hero-pill-btn-left', {
     y: 30,
     opacity: 0
   }, {
     y: 0,
     opacity: 1,
+    stagger: 0.15,
     duration: 1.1,
     ease: 'power3.out'
   }, '-=1.0');
 
-  // CTAs reveal
-  heroTL.fromTo('.hero-actions', {
-    opacity: 0,
-    y: 20
+  // Center column visual reveal
+  heroTL.fromTo('.hero-orbital-rings', {
+    scale: 0.85,
+    opacity: 0
   }, {
+    scale: 1,
     opacity: 1,
-    y: 0,
-    duration: 1,
+    duration: 1.2,
     ease: 'power3.out'
-  }, '-=0.9');
+  }, '-=1.1');
 
-  // Floating widgets stagger reveal
-  heroTL.fromTo('.hero-widget', {
-    y: 35,
-    scale: 0.92,
+  heroTL.fromTo('.hero-counselor-img', {
+    y: 40,
     opacity: 0
   }, {
     y: 0,
-    scale: 1,
     opacity: 1,
-    stagger: 0.15,
+    duration: 1.3,
+    ease: 'power3.out'
+  }, '-=1.0');
+
+  heroTL.fromTo('.hero-bottom-floating-actions', {
+    y: 20,
+    opacity: 0
+  }, {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    ease: 'power3.out'
+  }, '-=0.8');
+
+  // Right column card reveal
+  heroTL.fromTo('.hero-ratings-card-redesign', {
+    x: 40,
+    opacity: 0
+  }, {
+    x: 0,
+    opacity: 1,
     duration: 1.2,
     ease: 'power3.out'
-  }, '-=0.7');
+  }, '-=1.1');
 
-  // --- 1.5. FULL-TIME LOOPING FLOAT ANIMATIONS ---
-  // Independent floating loops running on the child .widget-inner wrappers
-  gsap.to('.widget-reviews .widget-inner', {
-    y: 5,
-    duration: 3.8,
+  // --- 1.5. LOOPING FLOATS FOR DECORATIVE DOODLES ---
+  // Gentle hover/pulse for sparkles
+  gsap.to('.hero-doodle-sparkle-left svg, .hero-doodle-sparkle-right svg', {
+    scale: 1.18,
+    duration: 1.8,
     ease: 'sine.inOut',
     repeat: -1,
     yoyo: true,
-    delay: 1.5
+    stagger: 0.4
   });
 
-  gsap.to('.widget-stats .widget-inner', {
-    y: -6,
-    duration: 4.2,
-    ease: 'sine.inOut',
-    repeat: -1,
-    yoyo: true,
-    delay: 1.7
-  });
-
-  gsap.to('.widget-chart .widget-inner', {
+  // Soft float for curved doodle arrow
+  gsap.to('.hero-doodle-arrow', {
     y: 4,
-    rotation: 1.5,
+    x: -3,
     duration: 3.5,
     ease: 'sine.inOut',
     repeat: -1,
-    yoyo: true,
-    delay: 1.9
+    yoyo: true
   });
-
-  gsap.to('.widget-confidential .widget-inner', {
-    y: -5,
-    duration: 4,
-    ease: 'sine.inOut',
-    repeat: -1,
-    yoyo: true,
-    delay: 2.1
-  });
-
-  // Infinite subtle shadow pulse loop for the widget cards
-  gsap.to('.hero-widget', {
-    boxShadow: '0 20px 45px rgba(0, 0, 0, 0.12)',
-    duration: 2.5,
-    ease: 'sine.inOut',
-    repeat: -1,
-    yoyo: true,
-    stagger: 0.3,
-    delay: 1.5
-  });
-
-  // --- 2. HERO PARALLAX EXIT ---
-  gsap.to('.hero-left-col', {
-    scrollTrigger: {
-      trigger: '.hero-sec',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true
-    },
-    y: 60,
-    opacity: 0.3,
-    ease: 'none'
-  });
-
-  gsap.to('.hero-subject-portrait img', {
-    scrollTrigger: {
-      trigger: '.hero-sec',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true
-    },
-    scale: 1.05,
-    ease: 'none'
-  });
-
-  gsap.to('.hero-backdrop-card', {
-    scrollTrigger: {
-      trigger: '.hero-sec',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true
-    },
-    y: 30,
-    ease: 'none'
-  });
-
-  gsap.to('.hero-widget', {
-    scrollTrigger: {
-      trigger: '.hero-sec',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true
-    },
-    y: -30,
-    ease: 'none'
-  });
-
   // --- 3. SECTION 2 STATEMENT PROGRESSIVE REVEAL ---
   const statementWords = document.querySelectorAll('.statement-reveal-word');
   if (statementWords.length > 0) {
