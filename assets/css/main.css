@@ -213,43 +213,45 @@ a {
   to {
     transform: rotate(360deg);
   }
-}.custom-cursor.hovered {
+}
+
+.custom-cursor.hovered {
   width: 8px;
   height: 8px;
   background-color: var(--color-primary);
 }
- 
+
 .custom-cursor-follower.hovered {
   width: 58px;
   height: 58px;
 }
- 
+
 .custom-cursor-follower.hovered .custom-cursor-follower-inner {
   filter: drop-shadow(0 0 14px rgba(43, 79, 141, 0.8));
   transform: scale(1.1);
 }
- 
+
 .custom-cursor-follower.lens-mode {
   width: 66px;
   height: 66px;
 }
- 
+
 .custom-cursor-follower.lens-mode .custom-cursor-follower-inner {
   filter: drop-shadow(0 0 16px rgba(43, 79, 141, 0.9)) saturate(130%);
 }
- 
+
 .custom-cursor-follower.view-mode {
   width: 70px;
   height: 70px;
 }
- 
+
 .custom-cursor-follower.view-mode .custom-cursor-follower-inner {
   background: var(--color-accent);
   border-radius: 50%;
   box-shadow: 0 0 20px rgba(111, 162, 95, 0.6);
   filter: none;
 }
- 
+
 .custom-cursor-follower.view-mode .custom-cursor-text {
   font-size: 0.72rem;
 }
@@ -1019,7 +1021,7 @@ header:has(~ .mobile-nav.open) {
   color: var(--color-primary);
   margin-bottom: 1.2rem;
 }
- 
+
 .journey-eyebrow span {
   width: 24px;
   height: 1px;
@@ -1142,7 +1144,7 @@ header:has(~ .mobile-nav.open) {
 }
 
 .journey-bcard--square {
-  min-height: 280px;
+  min-height: 380px;
 }
 
 .journey-bcard--square:nth-child(3) {
@@ -1160,17 +1162,17 @@ header:has(~ .mobile-nav.open) {
   --card-accent: #d9a79a;
   --card-glow: rgba(217, 167, 154, 0.2);
 }
- 
+
 .journey-bcard--accent-terracotta {
   --card-accent: #c98e78;
   --card-glow: rgba(201, 142, 120, 0.2);
 }
- 
+
 .journey-bcard--accent-teal {
   --card-accent: #d7b69d;
   --card-glow: rgba(215, 182, 157, 0.2);
 }
- 
+
 .journey-bcard--accent-lavender {
   --card-accent: #b88d7a;
   --card-glow: rgba(184, 141, 122, 0.2);
@@ -1777,7 +1779,7 @@ header:has(~ .mobile-nav.open) {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 38%);
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 38%);
   pointer-events: none;
 }
 
@@ -2716,4 +2718,47 @@ h6 {
     gap: 3rem;
     text-align: center;
   }
+}
+
+/* ============================================================
+   PSYCHOLOGY 360 — ANIMATIONS ADD-ON STYLESHEET
+   Append to the end of assets/css/main.css (or link separately
+   after main.css). Purely additive — does not override or
+   remove any existing rule, so your current design is untouched.
+   ============================================================ */
+
+/* Smooth GPU-friendly transforms for anything GSAP animates */
+.journey-bcard,
+.hero-sec-redesign,
+.hero-container-redesign,
+.services-sticky-image-wrap,
+.blog-card-img-wrap img,
+.prof-avatar-wrap img {
+  will-change: transform;
+}
+
+/* Lenis requires this on the scrolling root for correct behavior */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* Optional full-page load curtain — only activates if you add
+   <div class="page-curtain"></div> as the first child of <body> */
+.page-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: var(--color-bg-light);
+  pointer-events: none;
+}
+
+/* Count-up numeral styling hook (reuses your existing accent color) */
+.count-up {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-accent);
 }
