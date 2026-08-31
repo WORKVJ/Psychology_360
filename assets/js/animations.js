@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
      0. LENIS SMOOTH SCROLL — buttery 120fps scroll
      ────────────────────────────────────────────────────────────── */
   let lenis = null;
-  if (window.Lenis) {
+  const isMobileOrTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 1024;
+  if (window.Lenis && !isMobileOrTouch) {
     lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
