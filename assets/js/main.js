@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // Swap card theme class
           const theme = nextContent.getAttribute('data-theme');
-          ratingsCard.classList.remove('theme-red', 'theme-white');
+          ratingsCard.classList.remove('theme-blue', 'theme-white');
           ratingsCard.classList.add('theme-' + theme);
         }
       });
