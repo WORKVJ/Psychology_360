@@ -693,8 +693,19 @@ header:has(~ .mobile-nav.open) {
   gap: 3rem;
   width: 100%;
   margin-top: auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding-top: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 2.2rem 3rem;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s var(--transition-smooth), border-color 0.4s var(--transition-smooth);
+}
+
+.hero-bottom-row:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
 }
 
 .hero-bottom-col-left {
@@ -714,6 +725,7 @@ header:has(~ .mobile-nav.open) {
   font-weight: 900;
   color: var(--color-accent);
   line-height: 1;
+  text-shadow: 0 0 20px rgba(111, 162, 95, 0.35);
 }
 
 .badge-text-desc {
@@ -941,10 +953,14 @@ header:has(~ .mobile-nav.open) {
 
   .hero-bottom-row {
     flex-direction: column;
-    gap: 2.5rem;
-    padding: 2rem 0 0 0;
+    gap: 2rem;
+    padding: 2.2rem 1.5rem;
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     width: 100%;
   }
 

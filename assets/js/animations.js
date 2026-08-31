@@ -137,17 +137,31 @@ document.addEventListener('DOMContentLoaded', () => {
       }, '-=0.9');
     }
 
-    // Bottom row — staggered children
+    // Bottom row glass panel entrance
     if (document.querySelector('.hero-bottom-row')) {
-      heroTL.fromTo('.hero-bottom-row > *', {
+      heroTL.fromTo('.hero-bottom-row', {
         y: 40,
+        opacity: 0,
+        scale: 0.98
+      }, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 1.2,
+        ease: 'power3.out'
+      }, '-=1.0');
+
+      // Staggered fade reveal for inner columns
+      heroTL.fromTo('.hero-bottom-row > *', {
+        y: 15,
         opacity: 0
       }, {
         y: 0,
         opacity: 1,
-        stagger: 0.14,
-        duration: 0.9
-      }, '-=0.8');
+        stagger: 0.15,
+        duration: 0.8,
+        ease: 'power2.out'
+      }, '-=0.6');
     }
 
     // Circular play badge — spin entrance
