@@ -810,24 +810,26 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ──────────────────────────────────────────────────────────────
      20. SUBPAGE COMPONENTS & GRID ITEMS
      ────────────────────────────────────────────────────────────── */
-  // Vision / Mission Columns
-  const vmSec = document.querySelector('.vision-mission-sec');
-  if (vmSec) {
-    const columns = vmSec.querySelectorAll('.container > div');
-    gsap.fromTo(columns, {
+  // Vision / Mission / Values Cards
+  const vmvGrid = document.querySelector('.vmv-grid');
+  if (vmvGrid) {
+    const cards = vmvGrid.querySelectorAll('.vmv-card');
+    gsap.fromTo(cards, {
       opacity: 0,
-      y: 40,
-      scale: 0.95
+      y: 50,
+      scale: 0.95,
+      rotateX: 5
     }, {
       opacity: 1,
       y: 0,
       scale: 1,
-      stagger: 0.15,
-      duration: 1,
-      ease: 'power3.out',
+      rotateX: 0,
+      stagger: 0.2,
+      duration: 1.2,
+      ease: 'power4.out',
       scrollTrigger: {
-        trigger: vmSec,
-        start: 'top 80%'
+        trigger: vmvGrid,
+        start: 'top 82%'
       }
     });
   }

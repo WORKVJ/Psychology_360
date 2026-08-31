@@ -2836,3 +2836,78 @@ html.lenis-smooth {
     box-shadow: none;
   }
 }
+
+/* --- VISION, MISSION, VALUES CARDS --- */
+.vmv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.vmv-card {
+  background: var(--color-bg-dark);
+  border: 1px solid var(--color-border);
+  padding: 3rem 2.2rem;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s var(--transition-smooth), border-color 0.4s var(--transition-smooth), box-shadow 0.4s var(--transition-smooth);
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.vmv-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
+  opacity: 0;
+  transition: opacity 0.4s var(--transition-smooth);
+}
+
+.vmv-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-accent);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.vmv-card:hover::before {
+  opacity: 1;
+}
+
+.vmv-num {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+  line-height: 1;
+}
+
+.vmv-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  color: #ffffff;
+}
+
+.vmv-card p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .vmv-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
