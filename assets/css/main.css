@@ -460,6 +460,18 @@ header:has(~ .mobile-nav.open) {
   color: var(--color-text-dark);
 }
 
+.header-cta {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
 /* --- BUTTONS --- */
 .btn {
   display: inline-flex;
@@ -2380,11 +2392,26 @@ footer {
 
   .nav-links,
   .header-cta {
-    display: none;
+    display: none !important;
   }
 
   .menu-toggle {
     display: block;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .why-choose-us .container {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+  }
+
+  .scope-advantages .container {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
   }
 }
 
@@ -2911,3 +2938,4 @@ html.lenis-smooth {
     gap: 2rem;
   }
 }
+
