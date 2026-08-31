@@ -2762,3 +2762,77 @@ html.lenis-smooth {
   font-variant-numeric: tabular-nums;
   color: var(--color-accent);
 }
+
+/* --- ABOUT CLINIC BLOCK LAYOUT STYLES --- */
+.about-clinic-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-organic-mask-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.about-organic-mask-container {
+  width: 100%;
+  max-width: 520px;
+  height: 400px;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-subtle);
+  position: relative;
+  z-index: 2;
+}
+
+.about-organic-mask-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-floating-bubble {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background: var(--color-bg-dark);
+  border: 1px solid var(--color-border);
+  padding: 1.5rem;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-subtle);
+  z-index: 10;
+  max-width: 280px;
+  backdrop-filter: blur(10px);
+}
+
+.about-floating-bubble p {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0;
+  color: #fff;
+  font-weight: 500;
+}
+
+@media (max-width: 991px) {
+  .about-clinic-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+  .about-floating-bubble {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin: 1.5rem auto 0 auto;
+    max-width: 100%;
+    box-shadow: none;
+  }
+}
