@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Manjari:wght@400;700&family=Noto+Sans+Malayalam:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&family=Noto+Sans+Malayalam:wght@300;400;500;600;700&display=swap');
 
 /* --- COLOR & TYPOGRAPHY SYSTEM --- */
 :root {
@@ -22,8 +22,8 @@
   --color-border: rgba(255, 255, 255, 0.08);
   --color-border-solid: rgba(255, 255, 255, 0.18);
 
-  --font-heading: 'Plus Jakarta Sans', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-heading: Verdana, sans-serif;
+  --font-body: Verdana, sans-serif;
 
   --font-ml-heading: 'Manjari', sans-serif;
   --font-ml-body: 'Noto Sans Malayalam', sans-serif;
