@@ -1,119 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Home Pages -->
   <url>
     <loc>https://psychology360.com/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://psychology360.com/"/>
-    <xhtml:link rel="alternate" hreflang="ml" href="https://psychology360.com/ml/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://psychology360.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://psychology360.com/ml/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://psychology360.com/"/>
-    <xhtml:link rel="alternate" hreflang="ml" href="https://psychology360.com/ml/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://psychology360.com/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- About Pages -->
   <url>
     <loc>https://psychology360.com/about/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://psychology360.com/about/"/>
-    <xhtml:link rel="alternate" hreflang="ml" href="https://psychology360.com/ml/about/"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://psychology360.com/ml/about/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://psychology360.com/about/"/>
-    <xhtml:link rel="alternate" hreflang="ml" href="https://psychology360.com/ml/about/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Services Pages -->
   <url>
-    <loc>https://psychology360.com/services/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://psychology360.com/services/"/>
-    <xhtml:link rel="alternate" hreflang="ml" href="https://psychology360.com/ml/services/"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://psychology360.com/ml/services/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://psychology360.com/services/"/>
-    <xhtml:link rel="alternate" hreflang="ml" href="https://psychology360.com/ml/services/"/>
+    <loc>https://psychology360.com/courses/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Professionals Pages -->
-  <url>
-    <loc>https://psychology360.com/professionals/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://psychology360.com/professionals/"/>
-    <xhtml:link rel="alternate" hreflang="ml" href="https://psychology360.com/ml/professionals/"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://psychology360.com/ml/professionals/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://psychology360.com/professionals/"/>
-    <xhtml:link rel="alternate" hreflang="ml" href="https://psychology360.com/ml/professionals/"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Blog Pages -->
-  <url>
-    <loc>https://psychology360.com/blog/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://psychology360.com/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ml" href="https://psychology360.com/ml/blog/"/>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://psychology360.com/ml/blog/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://psychology360.com/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ml" href="https://psychology360.com/ml/blog/"/>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- FAQ Pages -->
   <url>
     <loc>https://psychology360.com/faq/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://psychology360.com/faq/"/>
-    <xhtml:link rel="alternate" hreflang="ml" href="https://psychology360.com/ml/faq/"/>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://psychology360.com/ml/faq/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://psychology360.com/faq/"/>
-    <xhtml:link rel="alternate" hreflang="ml" href="https://psychology360.com/ml/faq/"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
 
-  <!-- Contact Pages -->
   <url>
     <loc>https://psychology360.com/contact/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://psychology360.com/contact/"/>
-    <xhtml:link rel="alternate" hreflang="ml" href="https://psychology360.com/ml/contact/"/>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://psychology360.com/ml/contact/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://psychology360.com/contact/"/>
-    <xhtml:link rel="alternate" hreflang="ml" href="https://psychology360.com/ml/contact/"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
 
 </urlset>

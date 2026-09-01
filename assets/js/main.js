@@ -239,34 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 9. BILINGUAL PATH ROUTER ---
-  const langSwitcherLinks = document.querySelectorAll('.lang-switcher a');
-  langSwitcherLinks.forEach(switchLink => {
-    switchLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetLang = this.getAttribute('data-lang');
-      const currentPath = window.location.pathname;
-      let targetPath = '/';
-
-      if (targetLang === 'ml') {
-        if (currentPath.includes('/ml/')) {
-          targetPath = currentPath;
-        } else {
-          if (currentPath === '/' || (currentPath.endsWith('index.html') && !currentPath.includes('/', 2))) {
-            targetPath = '/ml/';
-          } else {
-            targetPath = '/ml' + currentPath;
-          }
-        }
-      } else {
-        targetPath = currentPath.includes('/ml/') ? currentPath.replace('/ml/', '/') : currentPath;
-      }
-
-      window.location.href = targetPath;
-    });
-  });
-
-  // --- 10. FORM VALIDATION ---
+  // --- 9. FORM VALIDATION ---
   const contactForm = document.querySelector('#contact-form');
   const formStatus = document.querySelector('.form-status');
   if (contactForm && formStatus) {
@@ -295,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 11. FAQ ACCORDION ---
+  // --- 10. FAQ ACCORDION ---
   const faqItems = document.querySelectorAll('.faq-item-editorial');
   faqItems.forEach(item => {
     const faqHeader = item.querySelector('.faq-header-editorial');

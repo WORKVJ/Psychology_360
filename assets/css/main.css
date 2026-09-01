@@ -354,27 +354,6 @@ header:has(~ .mobile-nav.open) {
   box-shadow: 0 2px 10px rgba(43, 79, 141, 0.25);
 }
 
-.lang-switcher {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.8rem;
-  font-weight: 700;
-  background-color: var(--color-secondary);
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-}
-
-.lang-switcher a {
-  color: var(--color-text-dark);
-  opacity: 0.65;
-}
-
-.lang-switcher a.active {
-  opacity: 1;
-  color: var(--color-text-dark);
-}
-
 /* Mobile navbar */
 .menu-toggle {
   display: none;
@@ -1034,7 +1013,7 @@ header:has(~ .mobile-nav.open) {
 }
 
 .journey-eyebrow span {
-  width: 24px;
+  width: 28px;
   height: 1px;
   background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
   display: inline-block;
@@ -1043,20 +1022,21 @@ header:has(~ .mobile-nav.open) {
 
 /* Section wrapper */
 .journey-bento-sec {
-  background: #ffffff;
+  background: linear-gradient(180deg, #ffffff 0%, #eef2f7 100%);
   padding: 8rem 0;
   position: relative;
   overflow: hidden;
+  border-radius: 48px;
+  box-shadow: 0 -30px 80px -40px rgba(0, 0, 0, 0.7);
 }
 
-.journey-bento-sec::before {
-  display: none;
-}
 
 .journey-bento-sec .container {
   max-width: 1260px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
+  z-index: 2;
 }
 
 /* ─── Section header ─── */
@@ -1065,7 +1045,7 @@ header:has(~ .mobile-nav.open) {
   align-items: flex-end;
   justify-content: space-between;
   gap: 3rem;
-  margin-bottom: 3rem;
+  margin-bottom: 3.6rem;
 }
 
 .journey-bento-header-left {
@@ -1076,7 +1056,7 @@ header:has(~ .mobile-nav.open) {
   font-family: var(--font-heading);
   font-size: clamp(2.6rem, 5vw, 4rem);
   font-weight: 800;
-  color: #0a120e;
+  color: #111c2e;
   letter-spacing: -0.04em;
   line-height: 1.08;
   margin: 0;
@@ -1089,9 +1069,9 @@ header:has(~ .mobile-nav.open) {
 
 .journey-bento-subtitle {
   font-size: 1rem;
-  line-height: 1.7;
-  color: #5a6b7a;
-  margin-bottom: 1.5rem;
+  line-height: 1.75;
+  color: #56657a;
+  margin-bottom: 1.6rem;
 }
 
 .journey-bento-cta {
@@ -1102,16 +1082,17 @@ header:has(~ .mobile-nav.open) {
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #2d7b62;
+  color: var(--color-primary);
   text-decoration: none;
-  border-bottom: 1px solid rgba(45, 123, 98, 0.4);
-  padding-bottom: 3px;
-  transition: color 0.3s, border-color 0.3s;
+  border-bottom: 1px solid rgba(43, 79, 141, 0.35);
+  padding-bottom: 4px;
+  transition: color 0.3s, border-color 0.3s, gap 0.3s;
 }
 
 .journey-bento-cta:hover {
-  color: #0a120e;
-  border-color: rgba(10, 18, 14, 0.5);
+  color: #111c2e;
+  border-color: rgba(17, 28, 46, 0.55);
+  gap: 0.7rem;
 }
 
 /* ─── Bento Grid ─── */
@@ -1119,26 +1100,18 @@ header:has(~ .mobile-nav.open) {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto auto;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
 /* Card base */
 .journey-bcard {
   position: relative;
+  display: flex;
   border-radius: 28px;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(1, 0, 0, 0.95), rgba(255, 2, 2, 0.95));
+  background: #0b111e;
   border: 1px solid rgba(255, 255, 255, 0.12);
   cursor: default;
-  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.42s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.3s;
-}
-
-.journey-bcard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.14);
-  border-color: rgba(255, 255, 255, 0.12);
 }
 
 /* Card size variants */
@@ -1168,143 +1141,118 @@ header:has(~ .mobile-nav.open) {
   grid-row: 2;
 }
 
-/* Accent glow per card */
-.journey-bcard--accent-violet {
-  --card-accent: #d9a79a;
-  --card-glow: rgba(217, 167, 154, 0.2);
-}
-
-.journey-bcard--accent-terracotta {
-  --card-accent: #c98e78;
-  --card-glow: rgba(201, 142, 120, 0.2);
-}
-
-.journey-bcard--accent-teal {
-  --card-accent: #d7b69d;
-  --card-glow: rgba(215, 182, 157, 0.2);
-}
-
-.journey-bcard--accent-lavender {
-  --card-accent: #b88d7a;
-  --card-glow: rgba(184, 141, 122, 0.2);
-}
-
-.journey-bcard:hover {
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.14), 0 0 0 1px var(--card-accent, rgba(255, 255, 255, 0.08));
-}
-
-/* ─── Bento Grid Card Content & Image Overlay Redesign ─── */
-.journey-bcard-img-wrap {
-  display: none !important;
-}
-
+/* ─── Bento Grid Card Content ─── */
+.journey-bcard-img-wrap,
 .journey-bcard-img-wrap img {
   display: none !important;
 }
 
-.journey-bcard-img-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.02);
-  z-index: 1;
-}
-
 .journey-bcard-content {
-  position: absolute;
-  inset: 0;
+  position: relative;
   z-index: 3;
-  padding: 2rem 2rem 1.3rem;
+  flex: 1;
+  min-width: 0;
+  padding: 2.2rem 2.2rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 0.8rem;
+  gap: 0.85rem;
 }
 
+/* Eyebrow sits at the top; everything after it is pushed to the base of the card */
 .journey-bcard-phase {
-  font-size: 0.66rem;
+  margin-bottom: auto;
+  font-size: 0.64rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255, 255, 255, 0.72);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .journey-bcard-phase::before {
   content: '';
   display: inline-block;
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.32);
+  background: var(--card-accent, #fff);
+  box-shadow: 0 0 12px var(--card-accent, rgba(255, 255, 255, 0.4));
+  transition: box-shadow 0.4s ease;
+}
+
+.journey-bcard:hover .journey-bcard-phase::before {
+  box-shadow: 0 0 20px 2px var(--card-accent, rgba(255, 255, 255, 0.6));
 }
 
 .journey-bcard-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.2rem, 2.8vw, 3.3rem);
+  font-size: clamp(2.1rem, 2.7vw, 3.1rem);
   font-weight: 800;
   color: #ffffff;
-  letter-spacing: -0.05em;
-  line-height: 0.98;
+  letter-spacing: -0.045em;
+  line-height: 1.03;
   margin: 0;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
 }
 
 .journey-bcard-desc {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: rgba(240, 240, 240, 0.88);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.68);
   margin: 0;
-  max-height: 100px;
-  opacity: 1;
+  max-width: 52ch;
 }
 
 .journey-bcard-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
-  margin-top: 0.25rem;
+  gap: 0.45rem;
+  margin-top: 0.45rem;
 }
 
 .journey-bcard-tags span {
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.9);
-  background: rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 999px;
-  padding: 0.45rem 0.8rem;
+  padding: 0.4rem 0.78rem;
+  white-space: nowrap;
+  transition: color 0.35s ease, border-color 0.35s ease, background 0.35s ease;
 }
 
+.journey-bcard:hover .journey-bcard-tags span {
+  color: #ffffff;
+  border-color: var(--card-accent, rgba(255, 255, 255, 0.3));
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Oversized tier numeral, bled off the corner so it reads as texture rather than a label */
 .journey-bcard-num {
   position: absolute;
-  bottom: -0.18em;
-  right: 0.9rem;
+  bottom: -2.6rem;
+  right: -0.6rem;
   font-family: var(--font-heading);
-  font-size: 7rem;
+  font-size: 12rem;
   font-weight: 900;
   line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.055);
   pointer-events: none;
   z-index: 1;
   user-select: none;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), -webkit-text-stroke-color 0.5s ease;
 }
 
-.journey-bcard::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--card-accent, #2b4f8d), transparent);
-  opacity: 0.9;
-  z-index: 3;
+.journey-bcard:hover .journey-bcard-num {
+  transform: translate(-6px, -8px);
+  -webkit-text-stroke-color: rgba(255, 255, 255, 0.11);
 }
 
 /* ─── Responsive ─── */
@@ -1354,11 +1302,6 @@ header:has(~ .mobile-nav.open) {
     grid-column: auto;
     grid-row: auto;
     min-height: 320px;
-  }
-
-  .journey-bcard-desc {
-    max-height: 120px;
-    opacity: 1;
   }
 
   .journey-bento-sec {
@@ -2449,11 +2392,6 @@ footer {
   }
 }
 
-/* Hide language switcher globally per user request */
-.lang-switcher {
-  display: none !important;
-}
-
 /* ============================================================
    2026 PREMIUM REDESIGN EXTENSIONS
    ============================================================ */
@@ -2514,37 +2452,63 @@ footer {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Dedicated Journey Bento Card styling - premium royal blue to green/teal gradients */
+/* Dedicated Journey Bento Card styling — layered light-source gradients per programme tier */
 .journey-bcard {
   position: relative;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  box-shadow:
+    0 18px 44px -12px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09) !important;
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease !important;
 }
 
+/* 01 — PG Diploma · royal blue */
 .journey-bcard--accent-violet {
-  background: linear-gradient(135deg, rgba(30, 48, 80, 0.85) 0%, rgba(8, 12, 20, 0.98) 100%) !important;
-  --card-accent: var(--color-primary);
-  --card-glow: rgba(43, 79, 141, 0.35);
+  background:
+    radial-gradient(125% 85% at 88% -5%, rgba(74, 122, 205, 0.34) 0%, transparent 58%),
+    linear-gradient(163deg, rgba(28, 47, 82, 0.95) 0%, rgba(11, 17, 30, 0.99) 64%) !important;
+  --card-accent: #6f9ce0;
+  --card-glow: rgba(74, 122, 205, 0.40);
 }
 
+/* 02 — Diploma · sage green */
 .journey-bcard--accent-terracotta {
-  background: linear-gradient(135deg, rgba(40, 65, 35, 0.85) 0%, rgba(8, 12, 20, 0.98) 100%) !important;
-  --card-accent: var(--color-accent);
-  --card-glow: rgba(111, 162, 95, 0.35);
+  background:
+    radial-gradient(125% 85% at 88% -5%, rgba(118, 176, 99, 0.32) 0%, transparent 58%),
+    linear-gradient(163deg, rgba(37, 60, 33, 0.95) 0%, rgba(10, 16, 22, 0.99) 64%) !important;
+  --card-accent: #9ecb84;
+  --card-glow: rgba(118, 176, 99, 0.40);
 }
 
+/* 03 — Certificate · teal */
 .journey-bcard--accent-teal {
-  background: linear-gradient(135deg, rgba(20, 45, 55, 0.85) 0%, rgba(8, 12, 20, 0.98) 100%) !important;
-  --card-accent: var(--color-accent);
-  --card-glow: rgba(111, 162, 95, 0.35);
+  background:
+    radial-gradient(125% 85% at 88% -5%, rgba(72, 158, 160, 0.30) 0%, transparent 58%),
+    linear-gradient(163deg, rgba(21, 51, 58, 0.95) 0%, rgba(9, 15, 24, 0.99) 64%) !important;
+  --card-accent: #79c6c6;
+  --card-glow: rgba(72, 158, 160, 0.40);
 }
 
+/* 04 — Partnerships · aubergine */
 .journey-bcard--accent-lavender {
-  background: linear-gradient(135deg, rgba(65, 30, 45, 0.85) 0%, rgba(8, 12, 20, 0.98) 100%) !important;
-  --card-accent: var(--color-primary);
-  --card-glow: rgba(43, 79, 141, 0.35);
+  background:
+    radial-gradient(125% 85% at 88% -5%, rgba(168, 96, 134, 0.30) 0%, transparent 58%),
+    linear-gradient(163deg, rgba(58, 30, 48, 0.95) 0%, rgba(12, 14, 24, 0.99) 64%) !important;
+  --card-accent: #d492b4;
+  --card-glow: rgba(168, 96, 134, 0.40);
+}
+
+/* Lift + accent bloom on hover */
+.journey-bcard:hover {
+  transform: translateY(-7px) !important;
+  border-color: rgba(255, 255, 255, 0.20) !important;
+  box-shadow:
+    0 34px 70px -18px rgba(0, 0, 0, 0.68),
+    0 0 60px -22px var(--card-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
 }
 
 .hero-ratings-card-redesign {
@@ -2723,7 +2687,7 @@ h6 {
 }
 
 .journey-bento-title {
-  color: #0a120e !important;
+  color: #111c2e !important;
 }
 
 .services-main-title {
@@ -2937,4 +2901,4 @@ html.lenis-smooth {
     gap: 2rem;
   }
 }
-
+
