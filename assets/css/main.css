@@ -466,7 +466,7 @@ header:has(~ .mobile-nav.open) {
 
 .btn-primary {
   background-color: var(--color-primary);
-  color: var(--color-bg-light);
+  color: #ffffff;
 }
 
 .header-support-btn {
@@ -484,7 +484,7 @@ header:has(~ .mobile-nav.open) {
 
 .btn-primary:hover {
   background-color: var(--color-accent);
-  color: var(--color-white);
+  color: #ffffff;
   transform: translateY(-2px);
 }
 
